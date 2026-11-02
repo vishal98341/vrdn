@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VWDN Home Services</title>
+<meta name="description" content="Licensed plumbing, electrical and air conditioning under one booking. Fixed price before work starts. Lifetime workmanship guarantee.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: deep "night" bands carry decisions (hero, system map, care, CTA); bone bands carry reading. Trade colours are accents only; Flare marks the one primary action. */
+:root{
+  color-scheme:light;
+  --night:#0A141F; --harbour:#0F1D2B; --harbour-2:#14263A; --harbour-3:#1C3247;
+  --line-d:rgba(255,255,255,.10); --line-d2:rgba(255,255,255,.18);
+  --on-dark:#EEF2F5; --on-dark-2:#9DAEBD;
+  --bone:#F3F0E9; --paper:#FAF8F4; --white:#FFFFFF; --line:#E2DCD0; --line-2:#CFC8BA;
+  --ink:#0B1622; --muted:#5A6672;
+  --flare:#FF6A2B; --flare-hi:#FF8148;
+  --water:#3A8DDE; --power:#F5B700; --air:#5CC8BE;
+  --water-ink:#1D5C9C; --power-ink:#7A5800; --air-ink:#1B6F67;
+  --ok:#3DDC84; --danger-bg:#2A0F0F; --danger-fg:#FFD9D2;
+  --display:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r:10px; --r-lg:16px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bone);color:var(--ink);font:400 16.5px/1.6 var(--body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--night)}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+img,svg{max-width:100%}
+:focus-visible{outline:2px solid var(--flare);outline-offset:3px;border-radius:6px}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{max-width:1280px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+.d{font-family:var(--display);font-variation-settings:'wdth' 116;font-weight:780;letter-spacing:-.015em;text-wrap:balance;margin:0;line-height:1}
+h1,h2,h3,h4,p{margin:0}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:600 12px/1.2 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.eyebrow::before{content:"";width:22px;height:1px;background:currentColor;opacity:.6}
+.dark .eyebrow,.night .eyebrow,.hero .eyebrow,.phero .eyebrow,.price.feature .eyebrow,.dark-card .eyebrow,.summary .eyebrow,.panel .eyebrow{color:var(--on-dark-2)}
+.h2{font-size:clamp(32px,4vw,54px)}
+.lead{font-size:18.5px;line-height:1.6;color:var(--muted);max-width:60ch}
+.dark,.night{color:var(--on-dark)}
+.dark{background:var(--harbour)} .night{background:var(--night)}
+.dark .lead,.night .lead{color:var(--on-dark-2)}
+.dot{color:var(--flare)}
+.c-water{--c:var(--water);--cink:var(--water-ink)}
+.c-power{--c:var(--power);--cink:var(--power-ink)}
+.c-air{--c:var(--air);--cink:var(--air-ink)}
+.c-flare{--c:var(--flare);--cink:#B3410F}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;border:0;border-radius:var(--r);padding:0 22px;font:600 15.5px/1 var(--body);letter-spacing:.005em;text-decoration:none;white-space:nowrap;transition:background .2s,border-color .2s,color .2s,transform .2s}
+.btn-primary{background:var(--flare);color:var(--night)}
+.btn-primary:hover{background:var(--flare-hi)}
+.btn-line{background:transparent;border:1px solid var(--line-d2);color:var(--on-dark)}
+.btn-line:hover{border-color:rgba(255,255,255,.45)}
+.btn-line.ink{border-color:var(--line-2);color:var(--ink)}
+.btn-line.ink:hover{border-color:var(--ink)}
+.btn-ink{background:var(--ink);color:var(--white)}
+.btn-ink:hover{background:var(--harbour-3)}
+.btn-sm{min-height:42px;padding:0 16px;font-size:14.5px}
+.btn:active{transform:translateY(1px)}
+.arrow::after{content:"";width:14px;height:14px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/contain no-repeat;transition:transform .2s}
+.arrow:hover::after{transform:translateX(3px)}
+.link{font:600 15px var(--body);text-decoration:none;display:inline-flex;align-items:center;gap:8px;border-bottom:1px solid currentColor;padding-bottom:2px}
+
+/* header */
+.utility{background:var(--night);color:var(--on-dark-2);font:500 12px/1 var(--mono);letter-spacing:.04em;border-bottom:1px solid var(--line-d)}
+.utility .wrap{display:flex;justify-content:space-between;gap:16px;padding-block:11px;flex-wrap:wrap}
+.live{display:inline-flex;align-items:center;gap:9px;color:#CFEBDB}
+.live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(61,220,132,.16);flex:none}
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(10,20,31,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:var(--on-dark);border-bottom:1px solid var(--line-d)}
+header.site .wrap{display:flex;align-items:center;gap:32px;min-height:76px}
+.logo{display:inline-flex;align-items:baseline;font-family:var(--display);font-variation-settings:'wdth' 125;font-weight:900;font-size:26px;letter-spacing:.03em;text-decoration:none;color:var(--on-dark);line-height:1}
+.logo span{color:var(--flare)}
+nav.main{display:flex;gap:2px;margin-right:auto}
+nav.main a{padding:9px 12px;border-radius:8px;text-decoration:none;font:500 14.5px var(--body);color:#C9D3DC;transition:color .2s,background .2s}
+nav.main a:hover{color:#fff;background:rgba(255,255,255,.05)}
+nav.main a[aria-current="page"]{color:#fff;background:rgba(255,255,255,.08)}
+nav.main a.em-link{color:#FFB08A}
+.head-cta{display:flex;gap:10px;align-items:center}
+.phone{font:600 14.5px var(--body);color:#fff;text-decoration:none;display:inline-flex;gap:9px;align-items:center;padding:0 14px;min-height:42px;border:1px solid var(--line-d2);border-radius:var(--r)}
+.menu-btn{display:none;background:transparent;border:1px solid var(--line-d2);border-radius:var(--r);width:46px;height:46px;place-items:center;margin-left:auto}
+.menu-btn svg{stroke:#fff}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--night);color:var(--on-dark);isolation:isolate}
+[tabindex="-1"]:focus{outline:none}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 55%;z-index:-2;transform:scale(1.02)}
+.hero-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,20,31,.97) 0%,rgba(10,20,31,.86) 30%,rgba(10,20,31,.35) 58%,rgba(10,20,31,.05) 100%),linear-gradient(0deg,rgba(10,20,31,1) 0%,rgba(10,20,31,.6) 22%,rgba(10,20,31,0) 48%)}
+.hero-inner{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end;padding-block:132px 72px;min-height:660px}
+.hero h1{font-size:clamp(50px,7.4vw,112px);line-height:.9;margin-top:26px}
+.hero .lead{margin-top:26px;font-size:19px;color:#C6D1DA;max-width:46ch}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
+.float-chips{display:grid;gap:12px;justify-items:end;padding-bottom:6px}
+.fchip{background:rgba(10,20,31,.58);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line-d2);border-radius:14px;padding:16px 20px;display:grid;gap:5px;min-width:250px;box-shadow:0 24px 50px -24px rgba(0,0,0,.7)}
+.fchip b{font:650 16.5px var(--body);color:#fff}
+.fchip small{font-size:13px;color:var(--on-dark-2)}
+.fchip .live{font:600 11px var(--mono);letter-spacing:.1em}
+.fchip.g{display:flex;align-items:center;gap:14px}
+.fchip.g .big{font-family:var(--display);font-variation-settings:'wdth' 116;font-weight:800;font-size:30px;color:var(--flare);line-height:1}
+.signals{position:absolute;left:0;right:0;bottom:120px;height:90px;z-index:-1;pointer-events:none;width:100%;opacity:.8}
+.bookbar{position:relative;z-index:2;margin-bottom:64px;background:rgba(20,38,58,.72);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border:1px solid var(--line-d2);border-radius:18px;padding:12px;display:grid;grid-template-columns:auto auto 1fr auto;gap:12px;align-items:center;box-shadow:0 40px 80px -40px rgba(0,0,0,.8)}
+.bb-label{padding:0 10px 0 12px;font:600 15.5px var(--body);white-space:nowrap}
+.pick{display:grid;grid-template-columns:repeat(3,auto);gap:8px}
+.pick button{background:rgba(10,20,31,.55);border:1px solid var(--line-d2);border-radius:var(--r);min-height:52px;padding:0 16px;color:var(--on-dark);font:600 15px var(--body);display:flex;align-items:center;gap:9px;transition:border-color .2s,background .2s}
+.pick button svg{stroke:var(--c);width:18px;height:18px}
+.pick button:hover{border-color:rgba(255,255,255,.4)}
+.pick button[aria-pressed="true"]{border-color:var(--c);background:color-mix(in srgb,var(--c) 16%,rgba(10,20,31,.55))}
+.pc{display:block;margin:0}
+.pc input{width:100%}
+.pc input{background:rgba(10,20,31,.6);border:1px solid var(--line-d2);border-radius:var(--r);color:#fff;padding:0 16px;height:52px;font:500 16px var(--body);min-width:0}
+.pc input::placeholder{color:#8496A8}
+.pc .btn{height:52px}
+.bookbar > .btn{height:52px}
+.pc-msg{grid-column:1/-1;font-size:13.5px;color:var(--on-dark-2);padding:0 12px;margin:-2px 0 2px}
+.pc-msg:empty{display:none}
+
+/* trust strip */
+.trust{background:var(--harbour);border-top:1px solid var(--line-d);border-bottom:1px solid var(--line-d)}
+.trust .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.trust .wrap > div{padding:28px 24px;border-left:1px solid var(--line-d);display:grid;gap:6px}
+.trust .wrap > div:first-child{border-left:0;padding-left:0}
+.trust b{font-family:var(--display);font-variation-settings:'wdth' 116;font-weight:780;font-size:21px;color:#fff;line-height:1.1}
+.trust span{font:500 12px/1.45 var(--mono);color:var(--on-dark-2);letter-spacing:.04em;text-transform:uppercase}
+
+/* sections */
+.band{padding-block:120px}
+.band.tight{padding-block:88px}
+.paper{background:var(--paper)}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap;margin-bottom:56px}
+.sec-head .title{max-width:760px;display:grid;gap:18px}
+.sec-head .side{max-width:42ch;display:grid;gap:18px;justify-items:start}
+
+/* system map */
+.sysmap{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:center}
+.sys-tabs{display:grid;gap:10px;margin-top:34px}
+.sys-tabs button{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;text-align:left;background:transparent;border:1px solid var(--line-d);border-radius:var(--r);padding:18px 20px;color:var(--on-dark);transition:border-color .2s,background .2s}
+.sys-tabs button i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.sys-tabs button b{display:block;font:600 16.5px var(--body)}
+.sys-tabs button small{display:block;font-size:14px;color:var(--on-dark-2);margin-top:2px}
+.sys-tabs button em{font:500 12px var(--mono);font-style:normal;color:var(--on-dark-2);letter-spacing:.06em}
+.sys-tabs button[aria-pressed="true"]{border-color:var(--c);background:color-mix(in srgb,var(--c) 9%,transparent)}
+.house{background:var(--harbour);border:1px solid var(--line-d);border-radius:var(--r-lg);padding:20px;aspect-ratio:600/440;max-width:100%}
+.house svg{width:100%;height:100%;display:block}
+.house .sys{transition:opacity .35s}
+.house[data-focus="water"] .sys:not(.s-water),.house[data-focus="power"] .sys:not(.s-power),.house[data-focus="air"] .sys:not(.s-air){opacity:.12}
+
+/* trade cards */
+.trades{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.tcard{background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.tcard:hover{transform:translateY(-3px);box-shadow:0 28px 50px -30px rgba(11,22,34,.45)}
+.tcard .art{aspect-ratio:16/9;background:var(--harbour);position:relative;border-bottom:3px solid var(--c);display:block;overflow:hidden}
+.tcard .art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.tcard:hover .art img{transform:scale(1.05)}
+.tcard .art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,20,31,.35))}
+.tcard .body{padding:28px;display:flex;flex-direction:column;gap:12px;flex:1}
+.tcard .k{font:600 11.5px var(--mono);letter-spacing:.12em;color:var(--cink);text-transform:uppercase}
+.tcard h3{font-size:30px}
+.tcard p{color:var(--muted);font-size:15.5px}
+.jobs{list-style:none;padding:0;margin:6px 0 0}
+.jobs a{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-top:1px solid var(--line);text-decoration:none;font:500 15px var(--body);transition:color .2s,padding .2s}
+.jobs a:hover{color:var(--cink);padding-left:4px}
+.jobs a::after{content:"→";color:var(--line-2)}
+.tcard .more{margin-top:auto;padding-top:14px;color:var(--cink)}
+
+/* finder */
+.finder{display:flex;flex-wrap:wrap;gap:10px}
+.chip{display:inline-flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--line);border-radius:999px;padding:12px 20px;font:500 15.5px var(--body);text-decoration:none;transition:border-color .2s,transform .2s}
+.chip i{width:8px;height:8px;border-radius:50%;background:var(--c);flex:none}
+.chip:hover{border-color:var(--ink);transform:translateY(-1px)}
+
+/* combo */
+.combo{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+.combo article{background:var(--white);padding:30px 26px;display:flex;flex-direction:column;gap:14px}
+.combo h3{font:650 19px/1.3 var(--body)}
+.combo p{font-size:15px;color:var(--muted)}
+.pills{display:flex;gap:6px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:6px;font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:6px 9px 6px 8px;border-radius:999px;border:1px solid var(--line);color:var(--ink)}
+.pill::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c)}
+.dark .pill,.night .pill{border-color:var(--line-d2);color:var(--on-dark)}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);padding:0;margin:0;counter-reset:s}
+.steps li{list-style:none;padding:30px 28px 0 0;display:grid;gap:10px;align-content:start;counter-increment:s}
+.steps li + li{padding-left:28px;border-left:1px solid var(--line)}
+.steps li::before{content:"0" counter(s);font:600 12.5px var(--mono);color:var(--flare);letter-spacing:.1em}
+.steps h3{font:650 19px var(--body)}
+.steps p{color:var(--muted);font-size:15px}
+
+/* pricing */
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.price{background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);padding:34px;display:flex;flex-direction:column;gap:12px}
+.price .amt{font-family:var(--display);font-variation-settings:'wdth' 116;font-weight:780;font-size:52px;line-height:1;margin-top:6px}
+.price .sub{color:var(--muted)}
+.price ul{margin:10px 0 0;padding:16px 0 0;border-top:1px solid var(--line);list-style:none;display:grid;gap:10px;font-size:15px}
+.price li{display:grid;grid-template-columns:auto 1fr;gap:10px}
+.price li::before{content:"";width:16px;height:16px;margin-top:3px;background:var(--ok);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5 9-10'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5 9-10'/%3E%3C/svg%3E") center/contain no-repeat}
+.price.feature{background:var(--harbour);color:var(--on-dark);border-color:var(--harbour)}
+.price.feature .sub{color:var(--on-dark-2)}
+.price.feature ul{border-color:var(--line-d)}
+.price .eyebrow::before{display:none}
+
+/* reviews */
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filters button{border:1px solid var(--line-2);background:transparent;border-radius:999px;padding:9px 16px;font:500 14px var(--body);transition:all .2s}
+.filters button:hover{border-color:var(--ink)}
+.filters button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.review{background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;display:flex;flex-direction:column;gap:18px}
+.review .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.stars{color:#D99A00;letter-spacing:3px;font-size:15px}
+.review blockquote{margin:0;font-size:17px;line-height:1.55}
+.review footer{display:flex;justify-content:space-between;gap:10px;margin-top:auto;padding-top:16px;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted)}
+.review footer em{font:500 11px var(--mono);font-style:normal;letter-spacing:.08em;text-transform:uppercase}
+
+/* care */
+.care{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.care-photo{margin:0;position:relative;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/5;max-width:100%}
+.care-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.care-photo figcaption{position:absolute;left:18px;right:18px;bottom:18px;background:rgba(10,20,31,.62);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line-d2);border-radius:12px;padding:14px 16px;display:grid;gap:4px}
+.care-photo figcaption b{color:#fff;font-weight:600}
+.care-photo figcaption .live{font:600 11px var(--mono);letter-spacing:.1em}
+.care-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.care-list li{display:grid;grid-template-columns:auto 1fr;gap:16px;border:1px solid var(--line-d);border-radius:var(--r);padding:18px 20px;background:rgba(255,255,255,.02)}
+.care-list i{width:9px;height:9px;border-radius:50%;background:var(--c);margin-top:8px}
+.care-list b{display:block;color:#fff;font-weight:600}
+.care-list span{color:var(--on-dark-2);font-size:14.5px}
+
+/* faq */
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:72px}
+.faqs details{border-top:1px solid var(--line)}
+.faqs details:last-child{border-bottom:1px solid var(--line)}
+.faqs summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;font:600 17.5px var(--body)}
+.faqs summary::-webkit-details-marker{display:none}
+.faqs summary::after{content:"";width:12px;height:12px;flex:none;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:rotate(45deg) translate(-3px,-3px);transition:transform .25s}
+.faqs details[open] summary::after{transform:rotate(225deg) translate(-2px,-2px)}
+.faqs details p{padding:0 0 24px;color:var(--muted);max-width:64ch}
+.card{background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);padding:30px;display:grid;gap:14px;align-content:start}
+.card form{display:grid;grid-template-columns:1fr auto;gap:10px}
+.input{border:1px solid var(--line-2);border-radius:var(--r);padding:0 16px;min-height:52px;font:500 16px var(--body);background:var(--paper);color:var(--ink);min-width:0;width:100%}
+textarea.input{padding:14px 16px;min-height:120px;resize:vertical}
+select.input{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 22px) 50%,calc(100% - 16px) 50%;background-size:6px 6px;background-repeat:no-repeat}
+.input:focus{border-color:var(--ink);outline:none;box-shadow:0 0 0 3px rgba(255,106,43,.25)}
+.msg{font-size:14px;color:var(--muted);min-height:21px}
+.msg.ok{color:#1B7A45}
+.msg.bad{color:#B3261E}
+
+/* final cta */
+.final{background:var(--night);color:var(--on-dark);position:relative;overflow:hidden}
+.final::after{content:"";position:absolute;right:-200px;top:-260px;width:620px;height:620px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,106,43,.22),transparent)}
+.final .wrap{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap;padding-block:100px}
+.final h2{font-size:clamp(36px,5vw,72px);max-width:15ch}
+.final .btns{display:flex;gap:12px;flex-wrap:wrap}
+
+/* footer */
+footer.site{background:var(--night);color:var(--on-dark-2);font-size:14.5px;border-top:1px solid var(--line-d)}
+footer.site .wrap{padding-block:72px 40px;display:grid;gap:56px}
+.foot-grid{display:grid;grid-template-columns:1.5fr repeat(4,1fr);gap:36px}
+.foot-grid .fh{font:600 11.5px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:0 0 16px}
+.foot-grid ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.foot-grid a{text-decoration:none;transition:color .2s}
+.foot-grid a:hover{color:#fff}
+.legal{border-top:1px solid var(--line-d);padding-top:24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font:500 12px/1.7 var(--mono);letter-spacing:.03em}
+
+/* sub-page hero */
+.phero{background:var(--night);color:var(--on-dark);position:relative;overflow:hidden;border-bottom:3px solid var(--c,var(--flare))}
+.phero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:72px 72px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 60%);mask-image:linear-gradient(90deg,transparent,#000 60%)}
+.phero .wrap{position:relative;z-index:1;padding-block:80px 88px;display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center}
+.phero.solo .wrap{grid-template-columns:1fr}
+.phero.photo{isolation:isolate}
+.phero.photo::before{background:linear-gradient(90deg,rgba(10,20,31,.96) 25%,rgba(10,20,31,.55) 70%,rgba(10,20,31,.3));-webkit-mask-image:none;mask-image:none;z-index:-1}
+.phero.photo .wrap{padding-block:120px 120px}
+.ph-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.crumb{font:500 12px var(--mono);color:var(--on-dark-2);letter-spacing:.1em;text-transform:uppercase}
+.crumb a{text-decoration:none}
+.crumb a:hover{color:#fff}
+.phero h1{font-size:clamp(42px,5.6vw,80px);line-height:.94;margin-top:22px;max-width:16ch}
+.phero .lead{margin-top:24px}
+.phero .art{border-radius:var(--r-lg);overflow:hidden;background:var(--harbour);border:1px solid var(--line-d);aspect-ratio:4/3}
+.phero .art img{width:100%;height:100%;display:block;object-fit:cover}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px}
+.card.form-grid{grid-template-columns:1fr 1fr;gap:16px}
+.svc{background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;display:flex;flex-direction:column;gap:12px}
+.svc .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 14%,#fff);color:var(--cink)}
+.svc h3{font:650 19px var(--body)}
+.svc p{color:var(--muted);font-size:15px}
+.svc .link{margin-top:auto;color:var(--cink);align-self:flex-start}
+.feature-list{display:grid;gap:0;border-top:1px solid var(--line)}
+.feature-list > div{display:grid;grid-template-columns:220px 1fr;gap:32px;padding:26px 0;border-bottom:1px solid var(--line)}
+.feature-list h3{font:650 18px var(--body)}
+.feature-list p{color:var(--muted)}
+.dark-card{background:var(--harbour);color:var(--on-dark);border-radius:var(--r-lg);padding:30px;display:grid;gap:12px;align-content:start}
+.dark-card p{color:var(--on-dark-2);font-size:15px}
+.prose{max-width:72ch;display:grid;gap:18px}
+.prose h2{font:650 22px var(--body);margin-top:18px}
+.prose p,.prose li{color:#2F3B47}
+.prose ul{margin:0;padding-left:20px;display:grid;gap:8px}
+
+/* emergency */
+.em{background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);padding:30px;display:grid;gap:14px;align-content:start;position:relative;overflow:hidden}
+.em::before{content:"";position:absolute;inset:0 0 auto;height:3px;background:var(--c)}
+.em h3{font:650 21px var(--body)}
+.em ol{margin:0;padding-left:20px;display:grid;gap:8px;color:#2F3B47}
+.danger{background:var(--danger-bg);color:var(--danger-fg);border-radius:var(--r-lg);padding:22px 26px;margin-top:28px;font-size:16px}
+.danger b{color:#fff}
+
+/* booking */
+.book{display:grid;grid-template-columns:1.35fr .65fr;gap:40px;align-items:start}
+.book-card{background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);padding:40px}
+.progress{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:30px}
+.progress span{height:3px;border-radius:2px;background:var(--line)}
+.progress span.on{background:var(--flare)}
+.step-label{font:600 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.book-card h2{font-size:34px;margin:10px 0 24px}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.opt{border:1px solid var(--line-2);background:var(--paper);border-radius:var(--r);padding:16px;text-align:left;font:500 15.5px var(--body);display:flex;gap:10px;align-items:center;min-height:56px;transition:border-color .2s,background .2s}
+.opt:hover{border-color:var(--ink)}
+.opt i{width:9px;height:9px;border-radius:50%;background:var(--c);flex:none}
+.opt[aria-pressed="true"]{border-color:var(--ink);background:var(--white);box-shadow:inset 0 0 0 1px var(--ink);font-weight:600}
+.opt:disabled{opacity:.4;cursor:not-allowed}
+.probs{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:24px}
+.slots{display:grid;gap:22px}
+.slot-day h3{font:600 15px var(--body);margin-bottom:10px}
+.slot-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.slot-row .opt{justify-content:center}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:grid;gap:8px}
+.field label{font:600 14px var(--body)}
+.full{grid-column:1/-1}
+.err{color:#B3261E;font-size:14px;min-height:20px;margin-top:10px}
+.book-nav{display:flex;justify-content:space-between;gap:12px;margin-top:28px;flex-wrap:wrap}
+.note{margin-top:22px;background:var(--bone);border-radius:var(--r);padding:16px 18px;font-size:14.5px;color:#2F3B47}
+.summary{background:var(--harbour);color:var(--on-dark);border-radius:var(--r-lg);padding:30px;display:grid;gap:18px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 100px)}
+.summary dl{margin:0;display:grid;gap:16px}
+.summary dt{font:600 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--on-dark-2)}
+.summary dd{margin:4px 0 0;font-weight:600}
+.summary p{font-size:14px;color:var(--on-dark-2);border-top:1px solid var(--line-d);padding-top:16px}
+.tracker{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:10px}
+.tracker li{border:1px solid var(--line-2);border-radius:var(--r);padding:16px 18px;display:flex;justify-content:space-between;gap:12px;font-weight:600}
+.tracker li span{font:500 12px var(--mono);color:var(--muted);letter-spacing:.04em}
+.tracker li.done{background:#EEF8F2;border-color:#BFE6CE}
+.tracker li.now{border-color:var(--flare);box-shadow:inset 0 0 0 1px var(--flare)}
+
+
+/* chat assistant */
+.chat-fab{position:fixed;right:max(24px,env(safe-area-inset-right,0px));bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:70;display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 22px 0 18px;border-radius:999px;border:1px solid var(--line-d2);background:var(--night);color:#fff;font:600 15px var(--body);box-shadow:0 20px 40px -16px rgba(10,20,31,.6);transition:transform .2s,background .2s}
+.chat-fab:hover{transform:translateY(-2px);background:var(--harbour-3)}
+.chat-fab .pulse{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(61,220,132,.2)}
+.chat-fab[aria-expanded="true"]{display:none}
+.chat{position:fixed;right:max(24px,env(safe-area-inset-right,0px));bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:80;width:400px;height:min(620px,calc(100dvh - 140px));background:var(--paper);border:1px solid var(--line);border-radius:20px;box-shadow:0 40px 80px -30px rgba(10,20,31,.55);display:flex;flex-direction:column;overflow:hidden}
+.chat[hidden]{display:none}
+.chat-head{background:var(--night);color:#fff;padding:18px 18px 16px 20px;display:flex;align-items:center;gap:12px}
+.chat-av{width:40px;height:40px;border-radius:12px;background:var(--harbour-3);display:grid;place-items:center;font-family:var(--display);font-variation-settings:'wdth' 125;font-weight:900;font-size:14px;letter-spacing:.02em;flex:none}
+.chat-av span{color:var(--flare)}
+.chat-head b{display:block;font:650 15.5px var(--body)}
+.chat-head small{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--on-dark-2)}
+.chat-head small::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ok)}
+.chat-x{margin-left:auto;width:38px;height:38px;border-radius:10px;border:1px solid var(--line-d2);background:transparent;color:#fff;display:grid;place-items:center}
+.chat-log{flex:1;overflow-y:auto;padding:20px 16px 8px;display:flex;flex-direction:column;gap:10px;overscroll-behavior:contain}
+.msg-b{max-width:86%;padding:12px 15px;border-radius:16px;font-size:15px;line-height:1.5;white-space:pre-line}
+.msg-b.bot{background:var(--white);border:1px solid var(--line);border-bottom-left-radius:6px;align-self:flex-start;color:var(--ink)}
+.msg-b.me{background:var(--ink);color:#fff;border-bottom-right-radius:6px;align-self:flex-end}
+.msg-b.bot.alert{background:var(--danger-bg);color:var(--danger-fg);border-color:var(--danger-bg)}
+.msg-b.bot.alert b{color:#fff}
+.msg-b a{color:inherit;font-weight:600}
+.typing{display:inline-flex;gap:4px;padding:14px 16px}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--muted);opacity:.4;animation:blink 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes blink{50%{opacity:1}}
+.quick{display:flex;flex-wrap:wrap;gap:8px;padding:4px 16px 12px}
+.quick button,.quick a{border:1px solid var(--line-2);background:var(--white);border-radius:999px;padding:9px 14px;font:500 14px var(--body);text-decoration:none;color:var(--ink);display:inline-flex;align-items:center;gap:8px;transition:border-color .2s,background .2s}
+.quick button:hover,.quick a:hover{border-color:var(--ink)}
+.quick .primary{background:var(--flare);border-color:var(--flare);color:var(--night);font-weight:600}
+.quick i{width:8px;height:8px;border-radius:50%;background:var(--c)}
+.chat-in{display:grid;grid-template-columns:1fr auto;gap:8px;padding:12px;border-top:1px solid var(--line);background:var(--white)}
+.chat-in input{border:1px solid var(--line-2);border-radius:12px;padding:0 14px;height:48px;font:500 15.5px var(--body);background:var(--paper);min-width:0;color:var(--ink)}
+.chat-in input:focus{outline:none;border-color:var(--ink)}
+.chat-in button{width:48px;height:48px;border-radius:12px;border:0;background:var(--ink);color:#fff;display:grid;place-items:center}
+.chat-foot{font-size:11.5px;color:var(--muted);text-align:center;padding:0 12px 10px;background:var(--white)}
+@media (max-width:680px){
+  .chat-fab{display:none}
+  .chat{inset:0;width:auto;height:auto;border-radius:0;border:0;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+  .chat-head{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+}
+@media (prefers-reduced-motion:reduce){.typing i{animation:none;opacity:.7}}
+
+.actionbar{display:none}
+
+@media (max-width:1180px){
+  nav.main a{padding:9px 9px;font-size:14px}
+  .phone{display:none}
+}
+@media (max-width:1000px){
+  .menu-btn{display:grid}
+  nav.main{display:none;position:absolute;left:0;right:0;top:100%;background:var(--night);flex-direction:column;padding:12px max(24px,env(safe-area-inset-right,0px)) 22px max(24px,env(safe-area-inset-left,0px));border-bottom:1px solid var(--line-d);margin:0}
+  nav.main.open{display:flex}
+  nav.main a{padding:14px 10px;font-size:17px;border-bottom:1px solid var(--line-d);border-radius:0}
+  .head-cta{display:none}
+  .phero .wrap,.care,.faq-grid,.book,.sysmap{grid-template-columns:1fr}
+  .hero-inner{grid-template-columns:1fr;min-height:0;padding-block:96px 40px}
+  .float-chips{justify-items:start;grid-auto-flow:column;justify-content:start}
+  .fchip.g{display:none}
+  .hero-shade{background:linear-gradient(180deg,rgba(10,20,31,.25) 0%,rgba(10,20,31,.55) 30%,rgba(10,20,31,.92) 58%,rgba(10,20,31,1) 100%)}
+  .hero-img{height:62%;object-position:62% 40%}
+  .hero-img{object-position:70% 30%}
+  .bookbar{grid-template-columns:1fr;padding:16px;margin-bottom:48px}
+  .bb-label{padding:0}
+  .pick{grid-template-columns:repeat(3,1fr)}
+  .pick button{justify-content:center;padding:0 8px}
+  .signals{display:none}
+  .care-photo{aspect-ratio:16/10}
+  .trust .wrap{grid-template-columns:repeat(2,1fr)}
+  .trust .wrap > div:nth-child(3){border-left:0;padding-left:0}
+  .trust .wrap > div:nth-child(n+3){border-top:1px solid var(--line-d)}
+  .trades,.prices,.reviews,.grid-3,.grid-4{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .combo{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr;row-gap:30px}
+  .steps li:nth-child(3){border-left:0;padding-left:0}
+  .foot-grid{grid-template-columns:1fr 1fr 1fr}
+  .foot-grid > div:first-child{grid-column:1/-1}
+  .summary{position:static}
+  .band{padding-block:88px}
+  .feature-list > div{grid-template-columns:1fr;gap:8px}
+}
+@media (max-width:680px){
+  body{font-size:16px}
+  .trades,.prices,.reviews,.grid-3,.grid-2,.grid-4,.combo,.steps,.card.form-grid{grid-template-columns:1fr}
+  .hero h1{font-size:48px}
+  .hero .lead{font-size:17px}
+  .phero h1{font-size:40px}
+  .hero-inner{padding-block:72px 28px}
+  .float-chips{display:none}
+  .phero.photo .wrap{padding-block:72px 72px}
+  .phero .wrap{padding-block:56px 64px;gap:36px}
+  .ctas .btn{flex:1 1 auto}
+  .panel{padding:20px}
+  .pick button{flex-direction:column;gap:4px;font-size:14px;min-height:62px}
+  .card form{grid-template-columns:1fr}
+  .sec-head .side{max-width:none}
+  .final .wrap{padding-block:72px}
+  .final .btns,.final .btns .btn{width:100%}
+  .final .btns p{width:100%;text-align:center}
+  .house{padding:10px}
+  .book-card h2{font-size:28px}
+  .slot-row{grid-template-columns:1fr 1fr 1fr;gap:6px}
+  .slot-row .opt{padding:12px 4px;font-size:13.5px}
+  .review blockquote{font-size:16px}
+  .price .amt{font-size:44px}
+  .stats b{font-size:19px}
+  .utility .wrap{justify-content:center}
+  .steps li + li{border-left:0;padding-left:0;border-top:1px solid var(--line)}
+  .steps li{padding-right:0}
+  .trust .wrap{grid-template-columns:1fr}
+  .trust .wrap > div{border-left:0!important;padding:20px 0!important;border-top:1px solid var(--line-d)}
+  .trust .wrap > div:first-child{border-top:0}
+  .opts,.probs,.fields{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .utility .lic{display:none}
+  .book-card{padding:24px}
+  .band{padding-block:72px}
+  .sec-head{margin-bottom:36px}
+  .actionbar{display:grid;grid-template-columns:1fr 1fr 1.5fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:55;background:rgba(10,20,31,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--line-d);padding:10px max(14px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(14px,env(safe-area-inset-left,0px))}
+  body{padding-bottom:76px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+@media (prefers-reduced-motion:no-preference){
+  html{scroll-behavior:smooth}
+  .sig{stroke-dasharray:1600;stroke-dashoffset:1600;animation:draw 2.6s cubic-bezier(.4,0,.2,1) .2s forwards}
+  .sig:nth-of-type(2){animation-delay:.45s}.sig:nth-of-type(3){animation-delay:.7s}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .flow{stroke-dasharray:6 10;animation:flow 1.6s linear infinite}
+  @keyframes flow{to{stroke-dashoffset:-32}}
+}
+</style>
+<meta name="theme-color" content="#0A141F">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="VWDN · Plumbing, Electrical & Air Conditioning">
+<meta property="og:description" content="One licensed crew for every system in your home. Fixed price before we start, lifetime guarantee after.">
+<meta property="og:image" content="assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+<aside class="utility" aria-label="Service status"><div class="wrap">
+  <span class="live">Phones answered 24/7 · Bookings 7 days</span>
+  <span class="lic">LIC · PLUMBING 000000 · ELECTRICAL 000000 · ARCTICK AU00000</span>
+</div></aside>
+
+<header class="site"><div class="wrap">
+  <a class="logo" href="#" aria-label="VWDN home">VWDN<span>.</span></a>
+  <nav class="main" id="mainnav" aria-label="Main">
+    <a href="#plumbing">Plumbing</a>
+    <a href="#electrical">Electrical</a>
+    <a href="#air-conditioning">Air Conditioning</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#care-plan">Care Plan</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#emergency" class="em-link">Emergency</a>
+  </nav>
+  <div class="head-cta">
+    <a class="phone" href="tel:1300000000"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>1300 000 000</a>
+    <a class="btn btn-primary btn-sm" href="#book" data-book="reset">Book online</a>
+  </div>
+  <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="Open menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+</div></header>
+
+<main id="main">
+
+<!-- ================= HOME ================= -->
+<div data-view="home">
+  <section class="hero">
+    <img class="hero-img" src="assets/img/hero.jpg" alt="" fetchpriority="high">
+    <div class="hero-shade"></div>
+    <svg class="signals" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+      <path class="sig" d="M0 50 C 240 50, 300 18, 520 18 S 820 70, 1040 52 S 1300 26, 1440 34" fill="none" stroke="#3A8DDE" stroke-width="1.6" opacity=".8"/>
+      <path class="sig" d="M0 66 L 300 66 L 336 42 L 372 80 L 408 54 L 700 54 L 736 30 L 772 76 L 808 58 L 1440 58" fill="none" stroke="#F5B700" stroke-width="1.6" opacity=".8"/>
+      <path class="sig" d="M0 80 C 200 90, 380 62, 600 74 S 1000 88, 1200 72 S 1380 70, 1440 74" fill="none" stroke="#5CC8BE" stroke-width="1.6" opacity=".8"/>
+    </svg>
+    <div class="wrap hero-inner">
+      <div>
+        <p class="eyebrow">Plumbing · Electrical · Air conditioning</p>
+        <h1 class="d" tabindex="-1">Water, power<br>and air. Handled<span class="dot">.</span></h1>
+        <p class="lead">One licensed crew for every system in your home. Fixed price before we start, lifetime guarantee after.</p>
+      </div>
+      <div class="float-chips" aria-hidden="true">
+        <div class="fchip"><span class="live">LIVE JOB TRACKING</span><b>Your electrician is 12 min away</b><small>Name, photo and ETA by SMS</small></div>
+        <div class="fchip g"><span class="big">∞</span><div><b>Lifetime guarantee</b><br><small>On every job, in writing</small></div></div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="bookbar" aria-labelledby="bbLabel">
+        <span class="bb-label" id="bbLabel">What needs fixing?</span>
+        <div class="pick" role="group" aria-label="Choose a trade" id="heroPick"></div>
+        <form class="pc" id="heroPc" novalidate>
+          <label for="heroPostcode" class="sr">Postcode</label>
+          <input type="text" id="heroPostcode" inputmode="numeric" maxlength="4" placeholder="Your postcode" autocomplete="postal-code">
+        </form>
+        <a class="btn btn-primary arrow" href="#book" id="panelBook">Book a plumber</a>
+        <p class="pc-msg" id="heroPcMsg" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust"><div class="wrap">
+    <div><b>Fully licensed</b><span>Plumbing · Electrical · ARCtick</span></div>
+    <div><b>Lifetime guarantee</b><span>On all workmanship</span></div>
+    <div><b>Fixed price</b><span>Approved before work starts</span></div>
+    <div><b>Same rate</b><span>Nights, weekends, holidays</span></div>
+  </div></div>
+
+  <section class="band dark" aria-labelledby="sysTitle">
+    <div class="wrap sysmap">
+      <div>
+        <p class="eyebrow">One home, three systems</p>
+        <h2 class="d h2" id="sysTitle" style="margin-top:18px">Every home runs on water, power and air.</h2>
+        <p class="lead" style="margin-top:20px">They're connected behind your walls, so we look after them together. Choose a system to see what our team covers.</p>
+        <div class="sys-tabs" role="group" aria-label="Highlight a system" id="sysTabs">
+          <button type="button" class="c-water" data-sys="water" aria-pressed="false"><i></i><span><b>Water</b><small>Pipes, drains, hot water and gas</small></span><em>PLUMBING</em></button>
+          <button type="button" class="c-power" data-sys="power" aria-pressed="false"><i></i><span><b>Power</b><small>Switchboard, circuits, lights and outlets</small></span><em>ELECTRICAL</em></button>
+          <button type="button" class="c-air" data-sys="air" aria-pressed="false"><i></i><span><b>Air</b><small>Split and ducted heating and cooling</small></span><em>AIR CON</em></button>
+        </div>
+      </div>
+      <div class="house" id="house" data-focus="all" role="img" aria-label="Cross-section of a two-storey home showing plumbing, electrical and air conditioning systems">
+        <svg viewBox="0 0 600 440" aria-hidden="true" font-family="JetBrains Mono, monospace">
+          <g stroke="rgba(255,255,255,.22)" stroke-width="2" fill="none">
+            <path d="M90 186 L300 62 L510 186"/>
+            <rect x="120" y="180" width="360" height="220"/>
+            <path d="M120 290 H480 M300 180 V400"/>
+            <path d="M20 400 H580" stroke="rgba(255,255,255,.35)"/>
+          </g>
+          <g fill="rgba(255,255,255,.38)" font-size="9.5" letter-spacing="1.2">
+            <text x="132" y="200">BATHROOM</text><text x="312" y="200">BEDROOM</text>
+            <text x="132" y="310">KITCHEN</text><text x="312" y="310">LIVING</text>
+          </g>
+          <g class="sys s-water" stroke="#3A8DDE" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="52" y="292" width="34" height="78" rx="6" fill="#0F1D2B"/>
+            <path d="M40 412 H160 V352 H205"/>
+            <path class="flow" d="M86 312 H140 V236 H205 V214"/>
+            <path d="M160 352 V300" opacity=".5"/>
+            <rect x="200" y="346" width="46" height="8" rx="2" fill="#3A8DDE"/>
+            <rect x="200" y="236" width="36" height="8" rx="2" fill="#3A8DDE"/>
+            <path d="M262 244 V412" stroke-dasharray="4 6" opacity=".6"/>
+            <path d="M226 386c0 0 8 9 8 15a8 8 0 0 1-16 0c0-6 8-15 8-15z" fill="#3A8DDE" stroke="none"/>
+            <text x="44" y="388" fill="#3A8DDE" stroke="none" font-size="9" letter-spacing="1">HOT WATER</text>
+          </g>
+          <g class="sys s-power" stroke="#F5B700" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="452" y="318" width="20" height="34" rx="3" fill="#0F1D2B"/>
+            <path d="M462 318 V196 H150"/>
+            <path d="M462 300 H150"/>
+            <path d="M462 352 V378 H330"/>
+            <g fill="#F5B700" stroke="none"><circle cx="210" cy="196" r="6"/><circle cx="390" cy="196" r="6"/><circle cx="210" cy="300" r="6"/><circle cx="390" cy="300" r="6"/></g>
+            <rect x="320" y="372" width="14" height="12" rx="2" fill="#0F1D2B"/>
+            <rect x="420" y="372" width="14" height="12" rx="2" fill="#0F1D2B"/>
+            <text x="438" y="368" fill="#F5B700" stroke="none" font-size="9" letter-spacing="1" text-anchor="end">SWITCHBOARD</text>
+          </g>
+          <g class="sys s-air" stroke="#5CC8BE" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="500" y="352" width="66" height="48" rx="6" fill="#0F1D2B"/>
+            <circle cx="533" cy="376" r="13"/>
+            <path d="M500 366 H490 V222 H452"/>
+            <path d="M490 326 H452"/>
+            <rect x="386" y="214" width="66" height="18" rx="5" fill="#0F1D2B"/>
+            <rect x="386" y="318" width="66" height="18" rx="5" fill="#0F1D2B"/>
+            <path class="flow" d="M392 246 C 404 254, 420 240, 436 250" opacity=".8"/>
+            <path class="flow" d="M392 350 C 404 358, 420 344, 436 354" opacity=".8"/>
+            <text x="533" y="420" fill="#5CC8BE" stroke="none" font-size="9" letter-spacing="1" text-anchor="middle">OUTDOOR UNIT</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="servicesTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="title"><p class="eyebrow">Our trades</p><h2 class="d h2" id="servicesTitle">Three trades. One standard.</h2></div>
+        <div class="side"><p class="lead">The same booking, uniform and guarantee, whichever trade you need.</p></div>
+      </div>
+      <div class="trades" id="tradeCards"></div>
+    </div>
+  </section>
+
+  <section class="band tight paper" aria-labelledby="finderTitle">
+    <div class="wrap">
+      <div class="sec-head"><div class="title"><p class="eyebrow">Not sure who to call?</p><h2 class="d h2" id="finderTitle">Tell us what's going on.</h2></div></div>
+      <div class="finder" id="finder"></div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="comboTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="title"><p class="eyebrow">Jobs that need more than one licence</p><h2 class="d h2" id="comboTitle">Book once. We bring whoever the job needs.</h2></div>
+        <div class="side"><p class="lead">Most businesses send one trade and leave you to organise the next. We plan the whole job so it's finished in fewer visits.</p></div>
+      </div>
+      <div class="combo">
+        <article><div class="pills"><span class="pill c-air">Air</span><span class="pill c-power">Power</span></div><h3>New split system</h3><p>Installer and electrician on one booking, with the dedicated circuit included in the quote.</p></article>
+        <article><div class="pills"><span class="pill c-water">Water</span><span class="pill c-power">Power</span></div><h3>Gas to heat-pump hot water</h3><p>The plumber removes the old unit and fits the new one; the electrician wires it and sets the timer.</p></article>
+        <article><div class="pills"><span class="pill c-water">Water</span><span class="pill c-power">Power</span></div><h3>Kitchen or bathroom renovation</h3><p>Rough-in and fit-off for plumbing, lighting and power points, scheduled around your builder.</p></article>
+        <article><div class="pills"><span class="pill c-power">Power</span><span class="pill c-air">Air</span><span class="pill c-water">Water</span></div><h3>Whole-home electrification</h3><p>Swap gas heating, cooking and hot water for efficient electric systems, staged to your budget.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band paper" id="how" aria-labelledby="howTitle">
+    <div class="wrap">
+      <div class="sec-head"><div class="title"><p class="eyebrow">How it works</p><h2 class="d h2" id="howTitle">No surprises, start to finish.</h2></div></div>
+      <ol class="steps">
+        <li><h3>Book in about a minute</h3><p>Online or by phone. Pick the arrival window that suits you.</p></li>
+        <li><h3>Know who's coming</h3><p>An SMS with your technician's name, photo and arrival time.</p></li>
+        <li><h3>Approve a fixed price</h3><p>We diagnose, explain the options and quote before any work starts.</p></li>
+        <li><h3>Clean finish</h3><p>Boot covers on, mess cleaned up, guarantee in writing.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="pricingTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="title"><p class="eyebrow">Pricing</p><h2 class="d h2" id="pricingTitle">Clear prices before you book.</h2></div>
+        <div class="side"><p class="lead">A fixed call-out fee, then a fixed price for the work. No hourly meter running.</p><a class="link" href="#pricing">How our pricing works →</a></div>
+      </div>
+      <div class="prices" id="pricePreview"></div>
+    </div>
+  </section>
+
+  <section class="band paper" aria-labelledby="reviewsTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="title"><p class="eyebrow">Reviews</p><h2 class="d h2" id="reviewsTitle">What our customers say.</h2></div>
+        <div class="side"><a class="link" href="#reviews">Read all reviews →</a></div>
+      </div>
+      <div class="reviews" id="reviewPreview"></div>
+    </div>
+  </section>
+
+  <section class="band night" aria-labelledby="careTitle">
+    <div class="wrap care">
+      <figure class="care-photo"><img src="assets/img/care.jpg" alt="" loading="lazy"><figcaption><span class="live">MEMBERS SKIP THE QUEUE</span><b>Priority booking in heatwaves</b></figcaption></figure>
+      <div style="display:grid;gap:22px;justify-items:start">
+        <p class="eyebrow">VWDN Care Plan</p>
+        <h2 class="d h2" id="careTitle">One yearly visit for every system in your home.</h2>
+        <p class="lead">Air conditioning, hot water and electrical safety checked by the right technicians in a single visit.</p>
+        <ul class="care-list" style="width:100%">
+          <li class="c-air"><i></i><div><b>Air conditioning service</b><span>Filter and coil clean, gas pressure and drainage.</span></div></li>
+          <li class="c-water"><i></i><div><b>Hot water &amp; plumbing check</b><span>Valves, connections and leak inspection.</span></div></li>
+          <li class="c-power"><i></i><div><b>Electrical safety check</b><span>Smoke alarms, safety switches and switchboard.</span></div></li>
+        </ul>
+        <a class="btn btn-primary arrow" href="#care-plan">Explore the Care Plan</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="faq" aria-labelledby="faqTitle">
+    <div class="wrap faq-grid">
+      <div style="display:grid;gap:22px;align-content:start">
+        <p class="eyebrow">Questions</p>
+        <h2 class="d h2" id="faqTitle">Good to know.</h2>
+        <p class="lead">Anything else? <a class="link" href="#contact">Ask us</a></p>
+      </div>
+      <div class="faqs">
+        <details open><summary>Do you charge extra after hours or on weekends?</summary><p>No. The call-out fee is the same seven days a week, and work is quoted as a fixed price whatever the time.</p></details>
+        <details><summary>Are your technicians licensed?</summary><p>Yes. Plumbers, gasfitters, electricians and refrigerant-handling technicians each hold the licence for their trade. Licence numbers are listed at the top and bottom of every page.</p></details>
+        <details><summary>Can one booking cover more than one trade?</summary><p>Yes. Tell us about the whole job and we'll schedule the right people together, for example an electrician and an air conditioning installer for a new split system.</p></details>
+        <details><summary>How do I know what it will cost?</summary><p>You pay the call-out fee. The technician then diagnoses the problem and gives you a written fixed price. Nothing starts until you approve it.</p></details>
+        <details><summary>What if something goes wrong after the job?</summary><p>Our workmanship is guaranteed for life. Call us and we'll come back and fix it at no charge. Manufacturer warranties apply to parts.</p></details>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= TRADE (rendered) ================= -->
+<div data-view="trade" hidden id="tradeView"></div>
+
+<!-- ================= PRICING ================= -->
+<div data-view="pricing" hidden>
+  <section class="phero solo"><div class="wrap"><div>
+    <p class="crumb"><a href="#">Home</a> / Pricing</p>
+    <h1 class="d" tabindex="-1">Fixed prices. No meter running<span class="dot">.</span></h1>
+    <p class="lead">You know the call-out fee before you book and approve a fixed price before any work starts. The same rates apply nights, weekends and public holidays.</p>
+  </div></div></section>
+  <section class="band"><div class="wrap">
+    <div class="prices" id="pricePage"></div>
+  </div></section>
+  <section class="band paper"><div class="wrap">
+    <div class="sec-head"><div class="title"><p class="eyebrow">What's included</p><h2 class="d h2">Every fixed price covers</h2></div></div>
+    <div class="feature-list">
+      <div><h3>Diagnosis</h3><p>A licensed technician finds the cause and explains it in plain English, with photos where it helps.</p></div>
+      <div><h3>Parts and labour</h3><p>One price for the whole job. If it takes longer than expected, that's on us.</p></div>
+      <div><h3>Options, not pressure</h3><p>Where there's more than one fix, you'll see each option with its price so you can choose.</p></div>
+      <div><h3>Clean-up</h3><p>Boot covers, drop sheets and old parts removed when we leave.</p></div>
+      <div><h3>Guarantee</h3><p>Lifetime workmanship guarantee in writing, plus the manufacturer's warranty on parts.</p></div>
+    </div>
+  </div></section>
+  <section class="band"><div class="wrap grid-3">
+    <div class="dark-card"><p class="eyebrow">Payment</p><h3 style="font:650 20px var(--body)">Pay on completion</h3><p>Card, bank transfer or digital wallet once the job is done and you're happy.</p></div>
+    <div class="dark-card"><p class="eyebrow">Finance</p><h3 style="font:650 20px var(--body)">Interest-free plans</h3><p>Spread the cost of new air conditioning or hot water systems, subject to approval.</p></div>
+    <div class="dark-card"><p class="eyebrow">Rebates</p><h3 style="font:650 20px var(--body)">We apply them for you</h3><p>Where your upgrade qualifies for a government energy rebate, we handle the paperwork.</p></div>
+  </div></section>
+</div>
+
+<!-- ================= REVIEWS ================= -->
+<div data-view="reviews" hidden>
+  <section class="phero solo"><div class="wrap"><div>
+    <p class="crumb"><a href="#">Home</a> / Reviews</p>
+    <h1 class="d" tabindex="-1">Reviews from our customers<span class="dot">.</span></h1>
+    <p class="lead">Read what people say about each trade, then tell us how we did on your job.</p>
+    <div class="ctas"><a class="btn btn-primary arrow" href="#contact">Leave a review</a></div>
+  </div></div></section>
+  <section class="band"><div class="wrap">
+    <div class="sec-head">
+      <div class="title"><p class="eyebrow">Filter by trade</p></div>
+      <div class="filters" role="group" aria-label="Filter reviews by trade" id="revFilters">
+        <button type="button" data-f="all" aria-pressed="true">All</button>
+        <button type="button" data-f="water" aria-pressed="false">Plumbing</button>
+        <button type="button" data-f="power" aria-pressed="false">Electrical</button>
+        <button type="button" data-f="air" aria-pressed="false">Air conditioning</button>
+      </div>
+    </div>
+    <div class="reviews" id="reviewList"></div>
+  </div></section>
+</div>
+
+<!-- ================= CARE PLAN ================= -->
+<div data-view="care-plan" hidden>
+  <section class="phero"><div class="wrap">
+    <div>
+      <p class="crumb"><a href="#">Home</a> / Care Plan</p>
+      <h1 class="d" tabindex="-1">Your whole home, looked after once a year<span class="dot">.</span></h1>
+      <p class="lead">One booking covers air conditioning, hot water and electrical safety. Problems get caught early, and members get priority when everyone else is waiting.</p>
+      <div class="ctas"><a class="btn btn-primary arrow" href="#book" data-book="care">Join the Care Plan</a><a class="btn btn-line" href="#contact">Ask a question</a></div>
+    </div>
+    <div class="panel">
+      <p class="eyebrow">Membership</p>
+      <p class="d" style="font-size:56px;color:#fff;margin-top:16px">$— <span style="font:500 16px var(--body);color:var(--on-dark-2)">per year</span></p>
+      <ul class="care-list" style="margin-top:22px">
+        <li class="c-flare"><i></i><div><b>Priority booking</b><span>Front of the queue all year.</span></div></li>
+        <li class="c-flare"><i></i><div><b>Member pricing</b><span>Discount on repairs and new systems.</span></div></li>
+        <li class="c-flare"><i></i><div><b>No call-out fee</b><span>On your annual visit.</span></div></li>
+      </ul>
+    </div>
+  </div></section>
+  <section class="band"><div class="wrap">
+    <div class="sec-head"><div class="title"><p class="eyebrow">Your annual visit</p><h2 class="d h2">What we check</h2></div></div>
+    <div class="grid-3">
+      <article class="svc c-air"><div class="ic" data-icon="air"></div><h3>Air conditioning</h3><p>Filter and coil clean, refrigerant pressure, drainage and outdoor unit check for up to two systems.</p></article>
+      <article class="svc c-water"><div class="ic" data-icon="water"></div><h3>Hot water &amp; plumbing</h3><p>Relief and tempering valves, anode check, visible pipework and taps checked for leaks.</p></article>
+      <article class="svc c-power"><div class="ic" data-icon="power"></div><h3>Electrical safety</h3><p>Smoke alarms tested, safety switches trip-tested and switchboard condition reported.</p></article>
+    </div>
+  </div></section>
+  <section class="band paper"><div class="wrap">
+    <ol class="steps">
+      <li><h3>Join online</h3><p>Pick a time for your first visit when you sign up.</p></li>
+      <li><h3>One visit, every system</h3><p>The right technicians arrive together or back to back.</p></li>
+      <li><h3>Your home report</h3><p>A short written report with photos and anything to plan for.</p></li>
+      <li><h3>Reminder next year</h3><p>We book your next visit around the same time.</p></li>
+    </ol>
+  </div></section>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<div data-view="about" hidden>
+  <section class="phero solo photo"><img class="ph-img" src="assets/img/about.jpg" alt=""><div class="wrap"><div>
+    <p class="crumb"><a href="#">Home</a> / About</p>
+    <h1 class="d" tabindex="-1">A trade business that runs like a premium service<span class="dot">.</span></h1>
+    <p class="lead">VWDN brings licensed plumbers, electricians and air conditioning technicians under one roof, one booking and one standard of work.</p>
+  </div></div></section>
+  <section class="band"><div class="wrap">
+    <div class="sec-head">
+      <div class="title"><p class="eyebrow">Why one team</p><h2 class="d h2">Your home's systems are connected. Your trades should be too.</h2></div>
+      <div class="side"><p class="lead">A new air conditioner needs an electrician. A heat-pump hot water system needs a plumber and an electrician. We plan these jobs as one, so you're not chasing three businesses.</p></div>
+    </div>
+    <div class="grid-4" id="promises">
+      <div class="card"><p class="eyebrow">01</p><h3 style="font:650 19px var(--body)">On time</h3><p class="msg">You get an arrival window and an SMS when we're on the way. If we're running late, we call before you wonder.</p></div>
+      <div class="card"><p class="eyebrow">02</p><h3 style="font:650 19px var(--body)">Fixed price first</h3><p class="msg">No work starts until you've approved a written price.</p></div>
+      <div class="card"><p class="eyebrow">03</p><h3 style="font:650 19px var(--body)">Respect for your home</h3><p class="msg">Boot covers, drop sheets and a clean-up before we leave.</p></div>
+      <div class="card"><p class="eyebrow">04</p><h3 style="font:650 19px var(--body)">Guaranteed</h3><p class="msg">Lifetime workmanship guarantee, in writing, on every job.</p></div>
+    </div>
+  </div></section>
+  <section class="band night"><div class="wrap">
+    <div class="sec-head"><div class="title"><p class="eyebrow">The team</p><h2 class="d h2">Licensed for every system.</h2></div></div>
+    <div class="grid-4">
+      <div class="dark-card c-water" style="border-top:3px solid var(--c)"><h3 style="font:650 18px var(--body)">Plumbers &amp; gasfitters</h3><p>Hot water, drains, leaks, gas appliances and renovations.</p></div>
+      <div class="dark-card c-power" style="border-top:3px solid var(--c)"><h3 style="font:650 18px var(--body)">Electricians</h3><p>Switchboards, fault finding, lighting, EV chargers and safety.</p></div>
+      <div class="dark-card c-air" style="border-top:3px solid var(--c)"><h3 style="font:650 18px var(--body)">AC technicians</h3><p>ARCtick-licensed for split, multi-split and ducted systems.</p></div>
+      <div class="dark-card c-flare" style="border-top:3px solid var(--c)"><h3 style="font:650 18px var(--body)">Customer care</h3><p>The people who answer your call and keep your job on schedule.</p></div>
+    </div>
+  </div></section>
+  <section class="band"><div class="wrap">
+    <div class="sec-head"><div class="title"><p class="eyebrow">Licences &amp; insurance</p><h2 class="d h2">Checked, current, on display.</h2></div></div>
+    <div class="feature-list">
+      <div><h3>Plumbing &amp; gasfitting</h3><p class="mono" style="font-family:var(--mono)">Licence 000000</p></div>
+      <div><h3>Electrical contractor</h3><p style="font-family:var(--mono)">Licence 000000</p></div>
+      <div><h3>Refrigerant handling</h3><p style="font-family:var(--mono)">ARCtick AU00000</p></div>
+      <div><h3>Public liability insurance</h3><p>Certificate available on request.</p></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ================= CONTACT ================= -->
+<div data-view="contact" hidden>
+  <section class="phero solo"><div class="wrap"><div>
+    <p class="crumb"><a href="#">Home</a> / Contact</p>
+    <h1 class="d" tabindex="-1">Talk to a real person<span class="dot">.</span></h1>
+    <p class="lead">Call any time, day or night. For anything that isn't urgent, send us a message and we'll reply within one business day.</p>
+  </div></div></section>
+  <section class="band"><div class="wrap contact-grid" id="contactGrid">
+    <div style="display:grid;gap:16px;align-content:start">
+      <div class="dark-card">
+        <p class="eyebrow">Call us · 24/7</p>
+        <p class="d" style="font-size:34px;color:#fff">1300 000 000</p>
+        <p>Emergencies answered around the clock.</p>
+        <div><a class="btn btn-primary btn-sm" href="tel:1300000000">Call now</a></div>
+      </div>
+      <div class="card">
+        <p class="eyebrow">Email</p>
+        <p style="font-weight:600;font-size:18px">hello@vwdn.com.au</p>
+        <p class="eyebrow" style="margin-top:10px">Office hours</p>
+        <p>Monday to Friday · 7am to 5pm<br>Saturday · 8am to 12pm</p>
+        <p class="eyebrow" style="margin-top:10px">Emergency?</p>
+        <p><a class="link" href="#emergency">What to do right now →</a></p>
+      </div>
+    </div>
+    <form class="card form-grid" id="contactForm" name="contact" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+      <p class="sr"><label>Leave this empty <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <h2 class="d full" style="font-size:30px">Send a message</h2>
+      <div class="field"><label for="cName">Name</label><input type="text" class="input" id="cName" name="name" autocomplete="name"></div>
+      <div class="field"><label for="cPhone">Mobile</label><input class="input" id="cPhone" name="phone" type="tel" autocomplete="tel"></div>
+      <div class="field"><label for="cEmail">Email</label><input class="input" id="cEmail" name="email" type="email" autocomplete="email"></div>
+      <div class="field"><label for="cTrade">Topic</label><select class="input" id="cTrade" name="topic"><option>General enquiry</option><option>Plumbing</option><option>Electrical</option><option>Air conditioning</option><option>Care Plan</option><option>Feedback or review</option></select></div>
+      <div class="field full"><label for="cMsg">Message</label><textarea class="input" id="cMsg" name="message"></textarea></div>
+      <div class="full" style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap"><p class="msg" id="cOut" aria-live="polite"></p><button class="btn btn-primary arrow" type="submit">Send message</button></div>
+    </form>
+  </div></section>
+</div>
+
+<!-- ================= EMERGENCY ================= -->
+<div data-view="emergency" hidden>
+  <section class="phero c-flare"><div class="wrap">
+    <div>
+      <p class="crumb"><a href="#">Home</a> / Emergency</p>
+      <h1 class="d" tabindex="-1">Something wrong right now<span class="dot">?</span></h1>
+      <p class="lead">Make it safe first, then call us. Urgent jobs go to the nearest available technician, at the same rate day or night.</p>
+      <div class="ctas"><a class="btn btn-primary" href="tel:1300000000">Call 1300 000 000</a><a class="btn btn-line" href="#book" data-book="reset">Not urgent? Book a time</a></div>
+    </div>
+    <div class="panel">
+      <p class="live">Emergency line open now</p>
+      <p class="d" style="font-size:44px;color:#fff;margin-top:18px">1300 000 000</p>
+      <p style="color:var(--on-dark-2);margin-top:12px;font-size:15px">Plumbing, electrical and air conditioning emergencies. Same call-out rate 24/7.</p>
+    </div>
+  </div></section>
+  <section class="band"><div class="wrap">
+    <div class="sec-head"><div class="title"><p class="eyebrow">While you wait</p><h2 class="d h2">Make it safe in the next few minutes.</h2></div></div>
+    <div class="grid-2">
+      <article class="em c-water"><h3>Burst pipe or major leak</h3><ol><li>Turn off the water at the mains tap, usually near the meter at the front of the property.</li><li>If water is near power points or lights, switch off that circuit at the switchboard, but only with dry hands and feet.</li><li>Move valuables and open a tap to drain the lines.</li></ol></article>
+      <article class="em c-power"><h3>Sparking, burning smell or electric shock</h3><ol><li>Don't touch the fitting, the appliance or anyone in contact with it.</li><li>If it's safe to reach, turn off the main switch at the switchboard.</li><li>If there's fire or someone is hurt, call 000 first.</li></ol></article>
+      <article class="em c-flare"><h3>You can smell gas</h3><ol><li>Don't use light switches, phones or flames inside.</li><li>Turn off the gas at the meter if you can do it safely, and open doors and windows.</li><li>Leave the building, then call your gas distributor's emergency line, or 000 if there's immediate danger.</li></ol></article>
+      <article class="em c-air"><h3>Air conditioning failed in extreme heat</h3><ol><li>Check the isolator switch beside the outdoor unit and the circuit at the switchboard. Reset once only.</li><li>Close blinds, run fans and move to the coolest room.</li><li>Tell us if there's an elderly person, a baby or a medical need in the home and we'll prioritise the visit.</li></ol></article>
+    </div>
+    <div class="danger"><b>Danger to life?</b> Call 000 for fire, injury or a serious gas leak before you call us.</div>
+  </div></section>
+</div>
+
+<!-- ================= BOOK ================= -->
+<form name="booking" data-netlify="true" netlify-honeypot="bot-field" hidden aria-hidden="true">
+  <input type="text" name="trade"><input type="text" name="problem"><input type="text" name="slot"><input type="text" name="name"><input type="tel" name="phone"><input type="text" name="postcode"><textarea name="notes"></textarea><input type="text" name="bot-field">
+</form>
+<div data-view="book" hidden>
+  <section class="band" style="padding-top:64px">
+    <div class="wrap">
+      <p class="crumb" style="color:var(--muted)"><a href="#">Home</a> / Book online</p>
+      <h1 class="sr" tabindex="-1">Book online</h1>
+      <div class="book" style="margin-top:24px">
+        <div class="book-card" id="bookCard"></div>
+        <aside class="summary" aria-label="Your booking">
+          <p class="eyebrow">Your booking</p>
+          <dl id="bookSummary"></dl>
+          <p>You approve a fixed price before any work starts.</p>
+          <p style="border:0;padding:0">Prefer to talk? <b style="color:#fff">1300 000 000</b></p>
+        </aside>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= LEGAL ================= -->
+<div data-view="privacy" hidden>
+  <section class="phero solo"><div class="wrap"><div><p class="crumb"><a href="#">Home</a> / Privacy</p><h1 class="d" tabindex="-1">Privacy policy<span class="dot">.</span></h1></div></div></section>
+  <section class="band"><div class="wrap prose">
+    <p>This policy explains how VWDN collects, uses and protects your personal information.</p>
+    <h2>What we collect</h2><p>Your name, contact details, address and the details of the job you book, plus photos taken at your property for the job record.</p>
+    <h2>How we use it</h2><ul><li>To schedule and carry out your job and send arrival updates.</li><li>To issue quotes, invoices and warranty records.</li><li>To remind you about servicing if you're a Care Plan member.</li></ul>
+    <h2>Who we share it with</h2><p>Only the people needed to do the job: our technicians, our payment and finance providers, and manufacturers when a warranty claim needs it. We never sell your information.</p>
+    <h2>Your choices</h2><p>You can ask to see, correct or delete your information at any time by contacting us.</p>
+  </div></section>
+</div>
+<div data-view="terms" hidden>
+  <section class="phero solo"><div class="wrap"><div><p class="crumb"><a href="#">Home</a> / Terms</p><h1 class="d" tabindex="-1">Terms of service<span class="dot">.</span></h1></div></div></section>
+  <section class="band"><div class="wrap prose">
+    <h2>Bookings</h2><p>A booking reserves an arrival window. We'll tell you by SMS if the window needs to change.</p>
+    <h2>Call-out fee and quotes</h2><p>The call-out fee covers travel and diagnosis. Any further work is quoted as a fixed price and only goes ahead with your approval.</p>
+    <h2>Payment</h2><p>Payment is due when the job is complete unless you've arranged a payment plan.</p>
+    <h2>Guarantee</h2><p>Our workmanship is guaranteed for the life of the installation. Parts carry the manufacturer's warranty. The guarantee doesn't cover damage from misuse or work by others.</p>
+    <h2>Cancellations</h2><p>You can cancel or reschedule free of charge up to two hours before your arrival window.</p>
+  </div></section>
+</div>
+
+<section class="final" id="finalCta">
+  <div class="wrap">
+    <div style="display:grid;gap:18px"><p class="eyebrow">Ready when you are</p><h2 class="d">Book once. We'll bring whoever the job needs<span class="dot">.</span></h2></div>
+    <div class="btns" style="align-items:center;gap:24px"><a class="btn btn-primary arrow" href="#book" data-book="reset">Book a technician</a><p style="color:var(--on-dark-2)">or call <b style="color:#fff">1300 000 000</b></p></div>
+  </div>
+</section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <div class="foot-grid">
+    <div style="display:grid;gap:16px;align-content:start">
+      <a class="logo" href="#">VWDN<span>.</span></a>
+      <p style="max-width:32ch">Plumbing, electrical and air conditioning by one licensed team.</p>
+      <p style="color:#fff;font-weight:600">1300 000 000</p>
+      <p>hello@vwdn.com.au</p>
+    </div>
+    <div><h2 class="fh">Services</h2><ul><li><a href="#plumbing">Plumbing</a></li><li><a href="#electrical">Electrical</a></li><li><a href="#air-conditioning">Air conditioning</a></li><li><a href="#emergency">Emergency</a></li></ul></div>
+    <div><h2 class="fh">Company</h2><ul><li><a href="#about">About</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#care-plan">Care Plan</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div><h2 class="fh">Help</h2><ul><li><a href="#book" data-book="reset">Book online</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+    <div><h2 class="fh">Legal</h2><ul><li><a href="#privacy">Privacy policy</a></li><li><a href="#terms">Terms of service</a></li></ul></div>
+  </div>
+  <div class="legal">
+    <span>ABN 00 000 000 000 · PLUMBING LIC 000000 · ELECTRICAL LIC 000000 · ARCTICK AU00000</span>
+    <span>© <span id="yr"></span> VWDN · Website by Wolfixx</span>
+  </div>
+</div></footer>
+
+<nav class="actionbar" aria-label="Quick actions">
+  <a class="btn btn-line" href="tel:1300000000">Call</a>
+  <button class="btn btn-line" type="button" data-chat-open aria-controls="chat">Chat</button>
+  <a class="btn btn-primary" href="#book" data-book="reset">Book now</a>
+</nav>
+
+<button class="chat-fab" id="chatFab" type="button" data-chat-open aria-controls="chat" aria-expanded="false"><span class="pulse"></span>Ask VWDN</button>
+<section class="chat" id="chat" role="dialog" aria-modal="false" aria-labelledby="chatTitle" hidden>
+  <div class="chat-head">
+    <div class="chat-av" aria-hidden="true">VW<span>.</span></div>
+    <div><b id="chatTitle">VWDN Assistant</b><small>Instant answers, 24/7</small></div>
+    <button class="chat-x" type="button" id="chatClose" aria-label="Close chat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="chat-log" id="chatLog" aria-live="polite"></div>
+  <div class="quick" id="chatQuick"></div>
+  <form class="chat-in" id="chatForm" autocomplete="off">
+    <label for="chatInput" class="sr">Type your question</label>
+    <input type="text" id="chatInput" placeholder="Type your question…" maxlength="300">
+    <button type="submit" aria-label="Send"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+  </form>
+  <p class="chat-foot">For danger to life, call 000.</p>
+</section>
+
+<script>
+(function(){
+"use strict";
+const ICON={
+  water:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg>',
+  power:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>',
+  air:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h11a3 3 0 1 0-3-3M3 12h16a3 3 0 1 1-3 3M3 16h8"/></svg>'
+};
+const ART={
+  water:'<svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="225" fill="#0F1D2B"/><g fill="none" stroke="#3A8DDE" stroke-width="7" stroke-linecap="round" opacity=".95"><path d="M-10 160 H110 Q140 160 140 130 V75 Q140 48 168 48 H410"/><path d="M-10 196 H210 Q240 196 240 166 V112 Q240 86 268 86 H410" opacity=".45"/></g><g fill="#3A8DDE"><circle cx="140" cy="104" r="10"/><circle cx="240" cy="140" r="10" opacity=".45"/></g><path d="M322 120c0 0 18 20 18 33a18 18 0 0 1-36 0c0-13 18-33 18-33z" fill="#3A8DDE"/></svg>',
+  power:'<svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="225" fill="#0F1D2B"/><g fill="none" stroke="#F5B700" stroke-width="3" opacity=".9"><path d="M-10 64 H90 V126 H210 V48 H330 V156 H410"/><path d="M-10 186 H140 V154 H270 V200 H410" opacity=".45"/></g><g fill="#0F1D2B" stroke="#F5B700" stroke-width="3"><rect x="74" y="48" width="32" height="32" rx="5"/><rect x="194" y="110" width="32" height="32" rx="5"/><rect x="314" y="140" width="32" height="32" rx="5"/></g><path d="M266 66 244 98h16l-4 24 24-34h-16z" fill="#F5B700"/></svg>',
+  air:'<svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="225" fill="#0F1D2B"/><rect x="80" y="44" width="240" height="60" rx="14" fill="#14263A" stroke="#5CC8BE" stroke-width="3"/><rect x="104" y="84" width="192" height="5" rx="2.5" fill="#5CC8BE" opacity=".6"/><g fill="none" stroke="#5CC8BE" stroke-width="4" stroke-linecap="round"><path d="M104 132 C 144 150, 184 120, 224 140 S 290 158, 316 140" opacity=".9"/><path d="M86 164 C 136 182, 186 152, 236 172 S 304 190, 334 172" opacity=".55"/><path d="M116 194 C 156 210, 196 184, 236 200 S 290 212, 306 202" opacity=".3"/></g></svg>'
+};
+const PHOTO={water:"assets/img/water.jpg",power:"assets/img/power.jpg",air:"assets/img/air.jpg",water_t:"assets/img/water_t.jpg",power_t:"assets/img/power_t.jpg",air_t:"assets/img/air_t.jpg"};
+const T={
+  water:{slug:'plumbing',name:'Plumbing',short:'Water',who:'a plumber',title:'Plumbing that gets fixed properly the first time.',
+    intro:'Leaks, blocked drains, hot water and gas fitting by licensed plumbers and gasfitters.',
+    jobs:[['Hot water repairs & replacement','Repair or replace electric, gas, heat-pump and instantaneous systems.','No hot water'],['Blocked drains','Camera inspection and jetting to find the cause, not just clear the symptom.','Blocked drain or toilet'],['Leaks & burst pipes','Leak detection and repair, from dripping taps to burst pipes in walls.','Leaking tap or pipe'],['Taps, toilets & fixtures','Replace or repair mixers, cisterns, toilets and shower fittings.','Taps, toilets or fixtures'],['Gas fitting','Cooktops, heaters and gas leak checks by a licensed gasfitter.','Gas appliance or gas fitting'],['Kitchen & bathroom plumbing','Rough-in and fit-off for renovations, scheduled around your builder.','Renovation plumbing']],
+    together:[['Heat-pump hot water','The plumber fits the unit; the electrician wires the circuit and timer.','power'],['Bathroom renovation','Plumbing plus lighting, exhaust fan and heated towel rail power.','power'],['Gas heating removal','Gas capped safely before your new reverse-cycle system goes in.','air']],
+    faq:[['How quickly can you fix my hot water?','Most repairs are done on the first visit. When a replacement is needed we carry common sizes so it can often be installed the same day.'],['Do you clear drains or fix them?','Both. We clear the blockage, then use a camera to show you the cause so you can decide whether a repair is worth it.']],
+    probs:['No hot water','Leaking tap or pipe','Blocked drain or toilet','Taps, toilets or fixtures','Gas appliance or gas fitting','Renovation plumbing','Something else']},
+  power:{slug:'electrical',name:'Electrical',short:'Power',who:'an electrician',title:'Safe, tidy electrical work, explained in plain English.',
+    intro:'Switchboards, lighting, power points and fault finding by licensed electricians.',
+    jobs:[['Switchboard upgrades','Replace old fuses with modern breakers and safety switches.','Switchboard upgrade'],['Fault finding','Power keeps tripping? We trace the fault and fix it, not just reset it.','Power keeps tripping'],['Lighting & power points','LED downlights, extra power points, USB outlets and outdoor lighting.','Lights or power points'],['Smoke alarms','Interconnected alarms installed to current standards.','Smoke alarms'],['EV chargers','Home charger supply and installation, with a load check on your switchboard.','EV charger'],['Ceiling fans & appliances','Fans, cooktops, ovens and dedicated appliance circuits.','Fans or appliances']],
+    together:[['New split system','Dedicated circuit and installation on the same booking.','air'],['Heat-pump hot water','Wiring, timer and isolation alongside the plumber.','water'],['Kitchen renovation','Power, lighting and appliance circuits with the plumbing fit-off.','water']],
+    faq:[['Why does my power keep tripping?','Usually a faulty appliance, a water-affected outdoor fitting or an overloaded circuit. We test each circuit to find the exact cause.'],['Do I need a switchboard upgrade?','If you still have ceramic fuses, no safety switches, or you are adding solar, a battery or an EV charger, we will usually recommend one.']],
+    probs:['Power keeps tripping','Lights or power points','Switchboard upgrade','Smoke alarms','EV charger','Fans or appliances','Something else']},
+  air:{slug:'air-conditioning',name:'Air Conditioning',short:'Air',who:'an AC technician',title:'Comfortable rooms in every season.',
+    intro:'Split, multi-split and ducted systems supplied, installed, serviced and repaired.',
+    jobs:[['Split system installation','Sized to the room and installed with the dedicated circuit included.','New system quote'],['Ducted air conditioning','Whole-home systems with zoning, designed around your floor plan.','New system quote'],['Service & clean','Filter and coil clean, refrigerant pressure and drainage check.','Service & clean'],['Repairs','Not cooling, leaking water or making noise? We repair all major brands.','Not cooling or heating'],['Multi-split systems','Several rooms from one outdoor unit where space is tight.','New system quote'],['Replace gas heating','Move from ducted gas to efficient reverse-cycle heating and cooling.','New system quote']],
+    together:[['New split system','Our electrician runs the circuit while we install the unit.','power'],['Electrification','Old gas heating removed and capped by our plumber.','water'],['Annual Care Plan','AC service plus hot water and electrical checks in one visit.','water']],
+    faq:[['What size system do I need?','It depends on room size, insulation, windows and which way the room faces. We measure on site rather than guessing from floor area alone.'],['How often should I service my AC?','Once a year for most homes, or every six months if you have pets, allergies or run it most days.']],
+    probs:['Not cooling or heating','Leaking or noisy','Service & clean','New system quote','Something else']}
+};
+const TRADES=['water','power','air'];
+const SLUG={plumbing:'water',electrical:'power','air-conditioning':'air'};
+const PAGES=['pricing','reviews','care-plan','about','contact','emergency','book','privacy','terms'];
+const HOME_ANCHORS=['how','faq'];
+const PRICES=[
+  {k:'Call-out & diagnosis',amt:'$—',sub:'Any trade, any day.',li:['Same rate nights and weekends','Credited to the job if you go ahead','Written fixed quote on the spot']},
+  {k:'Repairs & installs',amt:'Fixed',sub:'Priced per job, never per hour.',li:['You approve before work starts','Parts and labour in one price','Lifetime workmanship guarantee'],f:1},
+  {k:'New systems',amt:'0%',sub:'Interest-free payment plans.',li:['Split, ducted and hot water systems','Energy rebates applied where eligible','Subject to approval']}
+];
+const REVIEWS=[
+  ['water','Hot water went at 7am and the plumber was here before lunch. Fixed price, no surprises.','Customer name','Suburb'],
+  ['power','The switchboard upgrade was explained clearly before he started. Tidy work, and he cleaned up after.','Customer name','Suburb'],
+  ['air','The electrician and the AC tech came together and installed the split in one visit.','Customer name','Suburb'],
+  ['water','Found the cause of our blocked drain with the camera instead of just clearing it again.','Customer name','Suburb'],
+  ['power','Power kept tripping for weeks. Traced it to a faulty outdoor light in under an hour.','Customer name','Suburb'],
+  ['air','Service and clean on the ducted system. I got a text with the technician\'s name and arrival time.','Customer name','Suburb']
+];
+const FIND=[['No hot water','water','No hot water'],['Power keeps tripping','power','Power keeps tripping'],['AC blowing warm air','air','Not cooling or heating'],['Blocked drain or toilet','water','Blocked drain or toilet'],['Lights not working','power','Lights or power points'],['Leaking tap or pipe','water','Leaking tap or pipe'],['AC leaking or noisy','air','Leaking or noisy'],['Smoke alarms','power','Smoke alarms'],['I can smell gas','water',null,'emergency']];
+
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const FORMS_LIVE=true;
+async function sendForm(name,data){if(!FORMS_LIVE)return 'preview';try{const r=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(Object.assign({'form-name':name},data)).toString()});return r.ok?'ok':'fail'}catch(e){return 'fail'}}
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const state={trade:'water',problem:null,slot:null,step:1,name:'',phone:'',postcode:'',notes:'',done:false};
+function resetBooking(o){Object.assign(state,{problem:null,slot:null,step:1,done:false},o||{})}
+
+/* icons in static markup */
+$$('[data-icon]').forEach(el=>el.innerHTML=ICON[el.dataset.icon]);
+
+/* hero picker */
+$('#heroPick').innerHTML=TRADES.map(k=>`<button type="button" class="c-${k}" data-pick="${k}" aria-pressed="${k==='water'}">${ICON[k]}${T[k].short}</button>`).join('');
+function setPick(k){state.trade=k;$$('[data-pick]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.pick===k)));$('#panelBook').textContent='Book '+T[k].who}
+$$('[data-pick]').forEach(b=>b.addEventListener('click',()=>setPick(b.dataset.pick)));
+$('#panelBook').addEventListener('click',()=>{resetBooking();const v=$('#heroPostcode').value.trim();if(/^\d{4}$/.test(v))state.postcode=v});
+
+/* global booking entry points */
+document.addEventListener('click',e=>{const a=e.target.closest('[data-book]');if(!a)return;const m=a.dataset.book;
+  if(m==='reset')resetBooking();
+  else if(m==='quote')resetBooking({trade:'air',problem:'New system quote',step:2});
+  else if(m==='care')resetBooking({trade:'air',problem:'Care Plan annual visit',step:2});
+});
+
+/* system map */
+$('#sysTabs').addEventListener('click',e=>{const b=e.target.closest('[data-sys]');if(!b)return;const on=b.getAttribute('aria-pressed')!=='true';$$('#sysTabs button').forEach(x=>x.setAttribute('aria-pressed',String(on&&x===b)));$('#house').dataset.focus=on?b.dataset.sys:'all'});
+
+/* trade cards */
+$('#tradeCards').innerHTML=TRADES.map(k=>{const t=T[k];return `<article class="tcard c-${k}"><a class="art" href="#${t.slug}" aria-label="${t.name}"><img src="${PHOTO[k]}" alt="" loading="lazy"></a><div class="body"><p class="k">${t.short}</p><h3 class="d">${t.name}</h3><p>${t.intro}</p><ul class="jobs">${t.jobs.slice(0,4).map(j=>`<li><a href="#book" data-tb="${k}" data-tp="${esc(j[2])}">${j[0]}</a></li>`).join('')}</ul><a class="link more" href="#${t.slug}">All ${t.name.toLowerCase()} services →</a></div></article>`}).join('');
+
+/* finder */
+$('#finder').innerHTML=FIND.map(([label,k,p,dest])=>`<a class="chip c-${dest?'flare':k}" href="#${dest||'book'}" ${dest?'':`data-tb="${k}" data-tp="${esc(p)}"`}><i></i>${label}</a>`).join('');
+
+/* delegated: jump into booking with trade + problem */
+document.addEventListener('click',e=>{const a=e.target.closest('[data-tb]');if(!a)return;resetBooking({trade:a.dataset.tb,problem:a.dataset.tp||null,step:a.dataset.tp?2:1})});
+
+/* prices */
+const priceHTML=PRICES.map(p=>`<div class="price${p.f?' feature':''}"><p class="eyebrow">${p.k}</p><div class="amt">${p.amt}</div><p class="sub">${p.sub}</p><ul>${p.li.map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('');
+$('#pricePreview').innerHTML=priceHTML;$('#pricePage').innerHTML=priceHTML;
+
+/* reviews */
+function reviewHTML(list){return list.map(r=>`<article class="review c-${r[0]}"><div class="top"><span class="stars" aria-hidden="true">★★★★★</span><span class="pill c-${r[0]}">${T[r[0]].short}</span></div><blockquote>“${esc(r[1])}”</blockquote><footer><span>${esc(r[2])} · ${esc(r[3])}</span><em>Sample</em></footer></article>`).join('')}
+$('#reviewPreview').innerHTML=reviewHTML(REVIEWS.slice(0,3));
+function renderReviews(f){$('#reviewList').innerHTML=reviewHTML(REVIEWS.filter(r=>f==='all'||r[0]===f))}
+renderReviews('all');
+$('#revFilters').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;$$('#revFilters button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));renderReviews(b.dataset.f)});
+
+/* postcode checks */
+function pcCheck(formSel,inSel,msgSel){$(formSel).addEventListener('submit',e=>{e.preventDefault();const v=$(inSel).value.trim();const m=$(msgSel);if(!/^\d{4}$/.test(v)){m.textContent='Enter a 4-digit postcode.';m.className=m.className.replace(/ ?(ok|bad)/g,'')+' bad';return}state.postcode=v;m.className=m.className.replace(/ ?(ok|bad)/g,'')+' ok';m.textContent=`Postcode ${v} added to your booking. We'll confirm coverage when you book.`})}
+pcCheck('#heroPc','#heroPostcode','#heroPcMsg');
+
+/* contact form */
+$('#contactForm').addEventListener('submit',e=>{e.preventDefault();const out=$('#cOut');const name=$('#cName').value.trim(),phone=$('#cPhone').value.trim(),email=$('#cEmail').value.trim(),msg=$('#cMsg').value.trim();const miss=[];if(!name)miss.push('your name');if(phone.replace(/\D/g,'').length<8&&!/^\S+@\S+\.\S+$/.test(email))miss.push('a phone number or email');if(!msg)miss.push('a message');
+  if(miss.length){out.className='msg bad';out.textContent='Please add '+miss.join(', ')+'.';return}
+  const btn=e.target.querySelector('button[type=submit]');btn.disabled=true;out.className='msg';out.textContent='Sending…';
+  sendForm('contact',{name,phone,email,topic:$('#cTrade').value,message:msg,'bot-field':e.target.querySelector('[name=bot-field]').value}).then(res=>{btn.disabled=false;
+    if(res==='fail'){out.className='msg bad';out.textContent="We couldn't send your message. Please call us on 1300 000 000.";return}
+    out.className='msg ok';out.textContent=res==='ok'?`Thanks ${name.split(' ')[0]}. We've received your message and will reply within one business day.`:`Thanks ${name.split(' ')[0]}. Your message is ready. Online messages go live at launch, so for anything urgent please call.`;
+    if(res==='ok')e.target.reset()})});
+
+/* trade page */
+function renderTrade(k){const t=T[k];const v=$('#tradeView');v.className='c-'+k;
+v.innerHTML=`<section class="phero"><div class="wrap"><div><p class="crumb"><a href="#">Home</a> / ${t.name}</p><h1 class="d" tabindex="-1">${t.title}</h1><p class="lead">${t.intro} Fixed price before we start and a lifetime workmanship guarantee.</p><div class="ctas"><a class="btn btn-primary arrow" href="#book" data-tb="${k}">Book ${t.who}</a><a class="btn btn-line" href="tel:1300000000">Call 1300 000 000</a></div></div><div class="art"><img src="${PHOTO[k+'_t']}" alt=""></div></div></section>
+<section class="band"><div class="wrap"><div class="sec-head"><div class="title"><p class="eyebrow">${t.name} services</p><h2 class="d h2">What we do.</h2></div></div><div class="grid-3">${t.jobs.map(j=>`<article class="svc c-${k}"><div class="ic">${ICON[k]}</div><h3>${j[0]}</h3><p>${j[1]}</p><a class="link" href="#book" data-tb="${k}" data-tp="${esc(j[2])}">Book this →</a></article>`).join('')}</div></div></section>
+<section class="band dark"><div class="wrap"><div class="sec-head"><div class="title"><p class="eyebrow">Often booked together</p><h2 class="d h2">One visit instead of two.</h2></div></div><div class="grid-3">${t.together.map(x=>`<article class="dark-card" style="background:var(--harbour-2);border:1px solid var(--line-d)"><div class="pills"><span class="pill c-${k}">${t.short}</span><span class="pill c-${x[2]}">${T[x[2]].short}</span></div><h3 style="font:650 19px var(--body)">${x[0]}</h3><p>${x[1]}</p></article>`).join('')}</div></div></section>
+<section class="band"><div class="wrap faq-grid"><div style="display:grid;gap:18px;align-content:start"><p class="eyebrow">${t.name} questions</p><h2 class="d h2">Asked often.</h2></div><div class="faqs">${t.faq.map((f,i)=>`<details${i?'':' open'}><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join('')}</div></div></section>`;}
+
+/* booking */
+const WINDOWS=[['7–10am',7],['10am–1pm',10],['1–4pm',13]];
+function slotDays(){const out=[];const now=new Date();for(let i=0;out.length<3&&i<5;i++){const x=new Date(now);x.setDate(now.getDate()+i);const wins=WINDOWS.map(w=>({w:w[0],ok:i>0||w[1]>now.getHours()+1}));if(i===0&&!wins.some(w=>w.ok))continue;out.push({label:i===0?'Today':i===1?'Tomorrow':x.toLocaleDateString('en-AU',{weekday:'long'}),date:x.toLocaleDateString('en-AU',{day:'numeric',month:'short'}),wins})}return out}
+function renderSummary(){$('#bookSummary').innerHTML=`<div><dt>Trade</dt><dd>${T[state.trade].name}</dd></div><div><dt>Problem</dt><dd>${state.problem?esc(state.problem):'Not chosen yet'}</dd></div><div><dt>Arrival window</dt><dd>${state.slot?esc(state.slot):'Not chosen yet'}</dd></div><div><dt>Postcode</dt><dd>${state.postcode?esc(state.postcode):'—'}</dd></div>`}
+function bar(){return `<div class="progress" aria-hidden="true">${[1,2,3].map(i=>`<span class="${i<=state.step?'on':''}"></span>`).join('')}</div>`}
+function renderBook(){const c=$('#bookCard');renderSummary();
+  if(state.done){c.innerHTML=`<p class="live" style="color:#1B7A45">Request received</p><h2 class="d" style="margin-top:14px">Thanks ${esc(state.name.split(' ')[0])}. Here's what happens next.</h2><p style="color:var(--muted)">${state.sent==='ok'?"We've received your request and will confirm your booking by SMS shortly. If it's urgent, call 1300 000 000.":"We'll confirm your booking by SMS. Online booking goes live at launch, so please call if it's urgent."}</p><ol class="tracker"><li class="done">Booking request received <span>NOW</span></li><li class="now">Technician assigned <span>SMS WITH NAME + PHOTO</span></li><li>On the way <span>${esc(state.slot||'')}</span></li><li>Fixed price to approve <span>BEFORE WORK STARTS</span></li></ol><div class="book-nav"><a class="btn btn-ink" href="#">Back to home</a><button class="btn btn-line ink" type="button" id="again">Make another booking</button></div>`;
+    $('#again').onclick=()=>{resetBooking({notes:''});renderBook()};return}
+  if(state.step===1){const list=T[state.trade].probs.slice();if(state.problem&&!list.includes(state.problem))list.unshift(state.problem);
+    c.innerHTML=bar()+`<p class="step-label">Step 1 of 3</p><h2 class="d">What's going on?</h2><div class="opts" role="group" aria-label="Trade">${TRADES.map(k=>`<button type="button" class="opt c-${k}" data-bt="${k}" aria-pressed="${state.trade===k}"><i></i>${T[k].name}</button>`).join('')}</div><div class="probs" role="group" aria-label="Problem">${list.map(p=>`<button type="button" class="opt" data-bp="${esc(p)}" aria-pressed="${state.problem===p}">${esc(p)}</button>`).join('')}</div><p class="err" id="e1" aria-live="polite"></p><div class="note">Fixed call-out fee, then a written fixed price you approve before any work starts.</div><div class="book-nav"><span></span><button class="btn btn-primary arrow" type="button" id="n1">Choose a time</button></div>`;
+    $$('[data-bt]').forEach(b=>b.onclick=()=>{state.trade=b.dataset.bt;state.problem=null;renderBook()});
+    $$('[data-bp]').forEach(b=>b.onclick=()=>{state.problem=b.dataset.bp;renderBook()});
+    $('#n1').onclick=()=>{if(!state.problem){$('#e1').textContent='Choose the option that best describes the problem.';return}state.step=2;renderBook()};}
+  else if(state.step===2){c.innerHTML=bar()+`<p class="step-label">Step 2 of 3</p><h2 class="d">When suits you?</h2><div class="slots">${slotDays().map(s=>`<div class="slot-day"><h3>${s.label} · ${s.date}</h3><div class="slot-row">${s.wins.map(w=>{const v=`${s.label} ${s.date}, ${w.w}`;return `<button type="button" class="opt" data-bs="${esc(v)}" aria-pressed="${state.slot===v}" ${w.ok?'':'disabled'}>${w.w}</button>`}).join('')}</div></div>`).join('')}</div><p class="err" id="e2" aria-live="polite"></p><div class="book-nav"><button class="btn btn-line ink" type="button" id="b2">Back</button><button class="btn btn-primary arrow" type="button" id="n2">Your details</button></div>`;
+    $$('[data-bs]').forEach(b=>b.onclick=()=>{state.slot=b.dataset.bs;renderBook()});
+    $('#b2').onclick=()=>{state.step=1;renderBook()};
+    $('#n2').onclick=()=>{if(!state.slot){$('#e2').textContent='Pick an arrival window.';return}state.step=3;renderBook()};}
+  else{c.innerHTML=bar()+`<p class="step-label">Step 3 of 3</p><h2 class="d">Where should we come?</h2><form id="detailsForm" novalidate><div class="fields"><div class="field"><label for="bkName">Full name</label><input class="input" id="bkName" autocomplete="name" value="${esc(state.name)}"></div><div class="field"><label for="bkPhone">Mobile</label><input class="input" id="bkPhone" type="tel" autocomplete="tel" value="${esc(state.phone)}"></div><div class="field"><label for="bkPc">Postcode</label><input class="input" id="bkPc" inputmode="numeric" maxlength="4" autocomplete="postal-code" value="${esc(state.postcode)}"></div><div class="field full"><label for="bkNotes">Anything we should know? (optional)</label><textarea class="input" id="bkNotes">${esc(state.notes)}</textarea></div></div><p class="err" id="e3" aria-live="polite"></p><div class="book-nav"><button class="btn btn-line ink" type="button" id="b3">Back</button><button class="btn btn-primary arrow" type="submit">Request booking</button></div></form>`;
+    const save=()=>{state.name=$('#bkName').value.trim();state.phone=$('#bkPhone').value.trim();state.postcode=$('#bkPc').value.trim();state.notes=$('#bkNotes').value.trim()};
+    $('#b3').onclick=()=>{save();state.step=2;renderBook()};
+    $('#detailsForm').addEventListener('submit',e=>{e.preventDefault();save();const errs=[];if(!state.name)errs.push('your name');if(state.phone.replace(/\D/g,'').length<8)errs.push('a mobile number');if(!/^\d{4}$/.test(state.postcode))errs.push('a 4-digit postcode');if(errs.length){$('#e3').textContent='Please add '+errs.join(', ')+'.';return}
+      const btn=e.target.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Sending…';$('#e3').textContent='';
+      sendForm('booking',{trade:T[state.trade].name,problem:state.problem||'',slot:state.slot||'',name:state.name,phone:state.phone,postcode:state.postcode,notes:state.notes}).then(res=>{
+        if(res==='fail'){btn.disabled=false;btn.textContent='Request booking';$('#e3').textContent="We couldn't send your request. Please call us on 1300 000 000.";return}
+        state.sent=res;state.done=true;renderBook();window.scrollTo(0,0)})});}
+}
+
+
+/* ===== chat assistant (guided flows + keyword understanding) ===== */
+const chat=$('#chat'),log=$('#chatLog'),quick=$('#chatQuick'),cin=$('#chatInput'),fab=$('#chatFab');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let started=false,busy=false,lastFocus=null;
+function openChat(){lastFocus=document.activeElement;chat.hidden=false;fab.setAttribute('aria-expanded','true');if(!started){started=true;flow('start')}setTimeout(()=>cin.focus(),50)}
+function closeChat(){chat.hidden=true;fab.setAttribute('aria-expanded','false');if(lastFocus&&lastFocus.focus)lastFocus.focus()}
+document.addEventListener('click',e=>{if(e.target.closest('[data-chat-open]'))openChat()});
+$('#chatClose').addEventListener('click',closeChat);
+chat.addEventListener('keydown',e=>{if(e.key==='Escape'){e.stopPropagation();closeChat()}});
+function scrollLog(){log.scrollTop=log.scrollHeight}
+function addMe(t){const d=document.createElement('div');d.className='msg-b me';d.textContent=t;log.appendChild(d);scrollLog()}
+function setQuick(opts){quick.innerHTML='';(opts||[]).forEach(o=>{let el;if(o.href){el=document.createElement('a');el.href=o.href;el.addEventListener('click',()=>{if(o.run)o.run();closeChat()})}else{el=document.createElement('button');el.type='button';el.addEventListener('click',()=>{if(busy)return;addMe(o.label);o.go?flow(o.go,o.arg):o.run&&o.run()})}
+  el.innerHTML=(o.c?`<i class="c-${o.c}" style="background:var(--c)"></i>`:'')+esc(o.label);if(o.primary)el.className='primary';quick.appendChild(el)})}
+function say(msgs,opts){busy=true;setQuick([]);msgs=[].concat(msgs);let i=0;
+  const next=()=>{if(i>=msgs.length){busy=false;setQuick(opts);scrollLog();return}
+    const m=msgs[i++];const t=document.createElement('div');t.className='msg-b bot typing';t.innerHTML='<i></i><i></i><i></i>';log.appendChild(t);scrollLog();
+    setTimeout(()=>{t.className='msg-b bot'+(m.alert?' alert':'');t.innerHTML=m.html||esc(m);scrollLog();next()},reduce?0:Math.min(900,350+String(m.html||m).length*6))};
+  next()}
+const MAIN=[{label:'Something\'s broken',go:'broken'},{label:'Book a service',go:'book'},{label:'Get a quote',go:'quote'},{label:'Emergency',go:'emergency'},{label:'Pricing',go:'pricing'},{label:'Hours & areas',go:'hours'}];
+const backMain={label:'Something else',go:'menu'};
+const person={label:'Talk to a person',go:'person'};
+function bookOpts(trade,problem,label){return {label:label||'Choose a time',primary:true,href:'#book',run:()=>resetBooking({trade,problem,step:problem?2:1})}}
+const SAFETY={
+  water:{t:'Burst pipe or major leak',h:'<b>Do this now:</b>\n1. Turn off the water at the mains tap, usually by the meter at the front of the property.\n2. If water is near power points, switch off that circuit at the switchboard, but only with dry hands and feet.\n3. Open a tap to drain the lines.'},
+  power:{t:'Sparking or burning smell',h:'<b>Do this now:</b>\n1. Don\'t touch the fitting, the appliance or anyone in contact with it.\n2. If it\'s safe to reach, turn off the main switch at the switchboard.\n3. If there\'s fire or someone is hurt, call 000 first.'},
+  gas:{t:'I can smell gas',h:'<b>Do this now:</b>\n1. Don\'t use switches, phones or flames inside.\n2. Turn off the gas at the meter if it\'s safe, and open doors and windows.\n3. Leave the building, then call your gas distributor\'s emergency line, or 000 if there\'s immediate danger.'},
+  air:{t:'AC failed in the heat',h:'<b>Try this first:</b>\n1. Check the isolator switch by the outdoor unit and the circuit at the switchboard. Reset once only.\n2. Close blinds, run fans and use the coolest room.\n3. Tell us if there\'s an elderly person, a baby or a medical need at home and we\'ll prioritise you.'}
+};
+function flow(name,arg){
+  switch(name){
+  case 'start':return say(['Hi, I\'m the VWDN assistant.','I can help you sort out a problem, book a technician or answer questions. What do you need?'],MAIN);
+  case 'menu':return say('What else can I help with?',MAIN);
+  case 'broken':return say('Which part of the house is it?',TRADES.map(k=>({label:T[k].short+' · '+T[k].name,c:k,go:'trade',arg:k})).concat([backMain]));
+  case 'trade':{const t=T[arg];return say(`Got it, ${t.name.toLowerCase()}. Which of these is closest?`,t.probs.map(p=>({label:p,go:'problem',arg:[arg,p]})))}
+  case 'problem':{const [k,p]=arg;const t=T[k];
+    if(/gas smell|gas appliance/i.test(p)&&k==='water')return say([{alert:1,html:'<b>If you can smell gas right now</b>, leave the building and call your gas distributor\'s emergency line or 000.'},'For a gas appliance that isn\'t leaking, '+t.who+' can help.'],[bookOpts(k,p,'Book '+t.who),person,backMain]);
+    return say([`${t.who.charAt(0).toUpperCase()+t.who.slice(1)} can sort out "${p.toLowerCase()}".`,'You\'ll pay a fixed call-out fee, then approve a written fixed price before any work starts.'],[bookOpts(k,p,'Book '+t.who),{label:'How much will it cost?',go:'pricing'},person])}
+  case 'book':return say('Sure. Which trade do you need?',TRADES.map(k=>({label:T[k].name,c:k,href:'#book',run:()=>resetBooking({trade:k})})).concat([{label:'Not sure',go:'broken'}]));
+  case 'quote':return say('Happy to quote. What are you thinking of installing?',[
+      {label:'Split or ducted AC',c:'air',go:'quoteFor',arg:['air','New system quote']},
+      {label:'Hot water system',c:'water',go:'quoteFor',arg:['water','No hot water']},
+      {label:'Switchboard upgrade',c:'power',go:'quoteFor',arg:['power','Switchboard upgrade']},
+      {label:'EV charger',c:'power',go:'quoteFor',arg:['power','EV charger']},
+      {label:'Renovation',c:'water',go:'quoteFor',arg:['water','Renovation plumbing']}]);
+  case 'quoteFor':{const [k,p]=arg;return say(['We quote new installs on site so the price matches your home, not a guess.','Book a visit and you\'ll get a written fixed quote. Interest-free payment plans are available on new systems, subject to approval.'],[bookOpts(k,p,'Book a quote visit'),{label:'Pricing details',href:'#pricing'},backMain])}
+  case 'emergency':return say([{alert:1,html:'<b>Is anyone in danger?</b> For fire, injury or a serious gas leak, call 000 first.'},'Otherwise, call us on 1300 000 000. We answer 24/7. What\'s happening?'],Object.keys(SAFETY).map(k=>({label:SAFETY[k].t,c:k==='gas'?'flare':k,go:'safety',arg:k})).concat([{label:'Call 1300 000 000',primary:true,href:'tel:1300000000'}]));
+  case 'safety':{const k=arg;return say([{html:SAFETY[k].h},'Then call us on 1300 000 000. Urgent jobs go to the nearest available technician, at the same rate day or night.'],[{label:'Call 1300 000 000',primary:true,href:'tel:1300000000'},{label:'Emergency guide',href:'#emergency'},backMain])}
+  case 'pricing':return say(['Our pricing has two parts:\n1. A fixed call-out fee covers travel and diagnosis, the same any day or time.\n2. The technician then gives you a written fixed price for the job. Nothing starts until you approve it.','Every job has a lifetime workmanship guarantee.'],[{label:'See pricing',href:'#pricing'},{label:'Book a technician',primary:true,href:'#book',run:()=>resetBooking()},backMain]);
+  case 'hours':return say(['Phones are answered 24/7 for emergencies.\nOffice hours: Monday to Friday 7am to 5pm, Saturday 8am to 12pm.\nOnline booking is open any time.','Want me to note your postcode for your booking?'],[{label:'Add my postcode',go:'askPostcode'},{label:'Care Plan',go:'care'},backMain]);
+  case 'askPostcode':mode='postcode';return say('Type your 4-digit postcode.',[backMain]);
+  case 'care':return say(['The VWDN Care Plan is one yearly visit covering your air conditioning service, a hot water and plumbing check, and an electrical safety check.','Members get priority booking and member pricing.'],[{label:'Explore the Care Plan',href:'#care-plan'},{label:'Join',primary:true,href:'#book',run:()=>resetBooking({trade:'air',problem:'Care Plan annual visit',step:2})},backMain]);
+  case 'person':return say(['Call us on 1300 000 000, any time. You\'ll talk to our customer care team.','Or send a message and we\'ll reply within one business day.'],[{label:'Call 1300 000 000',primary:true,href:'tel:1300000000'},{label:'Send a message',href:'#contact'},backMain]);
+  case 'fallback':return say('Sorry, I didn\'t quite get that. Try one of these, or describe the problem in a few words, like "no hot water" or "power keeps tripping".',MAIN.concat([person]));
+  }
+}
+let mode=null;
+const SYN=[
+  [/(warm air|not cool|not cold|not heat|isn'?t cool|isn'?t heat|stopped (cooling|heating))/i,'air','Not cooling or heating'],
+  [/(aircon|air con|\bac\b|split|ducted).*(leak|drip|noise|noisy|rattl)|(leak|drip|noise|noisy).*(aircon|air con|\bac\b)/i,'air','Leaking or noisy'],
+  [/(service|clean).*(aircon|air con|\bac\b|split|ducted)|(aircon|air con|\bac\b).*(service|clean)/i,'air','Service & clean'],
+  [/(no hot water|hot water (is )?(not|isn'?t|stopped)|cold shower)/i,'water','No hot water'],
+  [/(block|clog|overflow)/i,'water','Blocked drain or toilet'],
+  [/(leak|drip|burst)/i,'water','Leaking tap or pipe'],
+  [/(trip|keeps cutting|power (went|goes) off|safety switch)/i,'power','Power keeps tripping'],
+  [/(smoke alarm|beeping)/i,'power','Smoke alarms'],
+  [/(ev charger|car charger|tesla)/i,'power','EV charger']
+];
+const KEYS=[
+  [/\b(000|danger|fire|smoke coming|spark|sparking|burning|shock|electrocut|burst|flood|gas (leak|smell)|smell(s)? (of )?gas|emergenc|urgent)\b/i,()=>flow('emergency')],
+  [/\b(prices?|pricing|costs?|how much|fees?|charges?|expensive|cheap|rates?)\b/i,()=>flow('pricing')],
+  [/\b(quotes?|install(ation)?|new (split |ducted |hot water )?(system|unit|ac|aircon|air con|hot water|switchboard)|replace(ment)?|upgrade)\b/i,()=>flow('quote')],
+  [/\b(hours?|open(ing)?|clos(e|ed|ing)|weekends?|sundays?|saturdays?|areas?|suburbs?|postcodes?|cover|service areas?|when are you)\b/i,()=>flow('hours')],
+  [/\b(care plan|membership|member|annual|maintenance plan)\b/i,()=>flow('care')],
+  [/\b(human|person|someone|staff|call me|call back|phone|talk|speak|contact)\b/i,()=>flow('person')],
+  [/\b(hot water|leak|leaking|drip|drain|block|toilet|tap|pipe|shower|sink|gas|plumb)/i,t=>matchTrade('water',t)],
+  [/\b(power|trip|tripping|light|switch|outlet|socket|power point|smoke alarm|ev|charger|fan|electric|wiring|fuse)/i,t=>matchTrade('power',t)],
+  [/\b(ac|a\/c|aircon|air con|air-con|air conditioning|cool|cooling|heat|heating|split|ducted|hvac|warm air)\b/i,t=>matchTrade('air',t)],
+  [/\b(book|appointment|schedule|booking)\b/i,()=>flow('book')],
+  [/\b(hi|hello|hey|g'?day)\b/i,()=>flow('menu')]
+];
+function matchTrade(k,text){const t=T[k];const lc=text.toLowerCase();
+  const hit=t.probs.find(p=>p!=='Something else'&&p.toLowerCase().split(/[ /]+/).some(w=>w.length>3&&lc.includes(w)));
+  if(hit)return flow('problem',[k,hit]);return flow('trade',k)}
+$('#chatForm').addEventListener('submit',e=>{e.preventDefault();const v=cin.value.trim();if(!v||busy)return;cin.value='';addMe(v);
+  if(mode==='postcode'){if(/^\d{4}$/.test(v)){mode=null;state.postcode=v;return say(`Thanks, I've added postcode ${v} to your booking. We'll confirm coverage when you book.`,[{label:'Book a technician',primary:true,href:'#book',run:()=>{const pc=state.postcode;resetBooking();state.postcode=pc}},backMain])}return say('That doesn\'t look like a postcode. Please type 4 digits, like 3000.',[backMain])}
+  mode=null;const early=[KEYS[0],KEYS[2]];for(const [re,fn] of early){if(re.test(v))return fn(v)}for(const [re,k,pr] of SYN){if(re.test(v))return flow('problem',[k,pr])}for(const [re,fn] of KEYS){if(re.test(v))return fn(v)}flow('fallback')});
+
+/* router */
+const nav=$('#mainnav'),menuBtn=$('#menuBtn');
+function closeMenu(){nav.classList.remove('open');menuBtn.setAttribute('aria-expanded','false')}
+function route(){
+  const h=decodeURIComponent(location.hash.slice(1));
+  let view='home';
+  if(SLUG[h]){renderTrade(SLUG[h]);view='trade'}
+  else if(PAGES.includes(h)){view=h;if(h==='book')renderBook()}
+  $$('[data-view]').forEach(v=>v.hidden=v.dataset.view!==view);
+  $$('nav.main a').forEach(a=>{if(a.getAttribute('href')==='#'+h)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+  $('#finalCta').hidden=['book','contact','privacy','terms'].includes(view);
+  closeMenu();
+  if(view==='home'&&HOME_ANCHORS.includes(h)){requestAnimationFrame(()=>document.getElementById(h).scrollIntoView());return}
+  window.scrollTo(0,0);
+  const h1=document.querySelector(`[data-view="${view}"] h1`);
+  if(h1&&h){h1.setAttribute('tabindex','-1');h1.focus({preventScroll:true})}
+}
+menuBtn.addEventListener('click',()=>{const o=nav.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(o));menuBtn.setAttribute('aria-label',o?'Close menu':'Open menu')});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+nav.addEventListener('click',e=>{if(e.target.closest('a'))closeMenu()});
+window.addEventListener('hashchange',route);
+$('#yr').textContent=new Date().getFullYear();
+route();
+})();
+</script>
+
+</body>
+</html>
